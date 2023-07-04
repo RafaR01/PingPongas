@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PingPongas</string>
     <string name="menu">Menu</string>
     <string name="adicionar_partida">Adicionar Partida</string>
     <string name="ranking">Ranking</string>

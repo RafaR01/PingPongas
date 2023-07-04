@@ -13,6 +13,24 @@
         android:theme="@style/Theme.PingPongas"
         tools:targetApi="31">
         <activity
+            android:name=".AdicionarPartida2"
+            android:exported="false" />
+        <activity
+            android:name=".TerminarSessao"
+            android:exported="false" />
+        <activity
+            android:name=".Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Historico"
+            android:exported="false" />
+        <activity
+            android:name=".Ranking"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarPartida"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
