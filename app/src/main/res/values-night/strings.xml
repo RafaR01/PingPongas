@@ -6,4 +6,10 @@
     <string name="historico">Histórico</string>
     <string name="perfil">Perfil</string>
     <string name="terminar_sessao">Terminar Sessão</string>
+    <string name="nova_partida">Nova Partida</string>
+    <string name="selecionar_adversario">Selecionar Adversário:</string>
+    <string name="pontos">Pontos</string>
+    <string name="partida">Partida</string>
+    <string name="jogador1">Jogador1</string>
+    <string name="jogador2">Jogador2</string>
 </resources>

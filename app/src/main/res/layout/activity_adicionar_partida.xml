@@ -6,4 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".AdicionarPartida">
 
+    <Spinner
+        android:id="@+id/selectadvr"
+        android:layout_width="319dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginBottom="128dp"
+        android:text="@string/selecionar_adversario"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/novapartida"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/novapartida"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="220dp"
+        android:text="@string/nova_partida"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
