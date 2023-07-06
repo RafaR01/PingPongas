@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button">Button</string>
+    <string name="Login" />
+    <string name="entrar">Entrar</string>
+    <string name="utilizador">Utilizador</string>
+    <string name="iniciar_sess_o">Iniciar Sessão</string>
+    <string name="senha">Senha</string>
+    <string name="ainda_n_o_tens_conta">Ainda não tens conta?</string>
+    <string name="criar_conta">Criar Conta</string>
+</resources>
