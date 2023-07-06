@@ -21,7 +21,7 @@
     <string name="jogador1">Jogador1</string>
     <string name="jogador2">Jogador2</string>
     <string name="nomeutilizador">NomeUtilizador</string>
-    <string name="melhor_pontua_o">Melhor Pontuação</string>
+    <string name="melhor_pontuacao">Melhor Pontuação</string>
     <string name="adicionar_partida_2">Adicionar Partida</string>
     <string name="partidas_disputadas">Partidas Disputadas</string>
     <string name="pontua_o">Pontuação:</string>
@@ -30,4 +30,5 @@
     <string name="partidas_ganhas">Partidas Ganhas</string>
     <string name="win_streak">Win Streak</string>
     <string name="melhor_win_streak">Melhor Win Streak</string>
+    <string name="galeria">Galeria</string>
 </resources>

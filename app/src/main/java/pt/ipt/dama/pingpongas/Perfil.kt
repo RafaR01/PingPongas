@@ -29,6 +29,7 @@ class Perfil : AppCompatActivity() {
 
         fotoUtilizador = findViewById(R.id.imagemPerfil);
         val btnImagem : Button = findViewById(R.id.altImagem);
+        val btnImagemGaleria : Button = findViewById(R.id.fotoGaleria);
 
         if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
             checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
@@ -42,6 +43,9 @@ class Perfil : AppCompatActivity() {
         btnImagem.setOnClickListener {
             abrirCamera();
             true;
+        }
+        btnImagemGaleria.setOnClickListener {
+            fotoGaleria();
         }
     }
 
@@ -69,6 +73,23 @@ class Perfil : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                IMAGE_CAPTURE_CODE -> {
+                    val bitmap = uriToBipmap(imagemUri!!)
+                    fotoUtilizador.setImageBitmap(bitmap)
+                }
+                RESULT_LOAD_IMAGE -> {
+                    if (data != null) {
+                        imagemUri = data.data
+                        val bitmap = uriToBipmap(imagemUri!!)
+                        fotoUtilizador.setImageBitmap(bitmap)
+                    }
+                }
+            }
+        }
+
+       /**
         if(requestCode == IMAGE_CAPTURE_CODE && resultCode == Activity.RESULT_OK){
             val bitmap = uriToBipmap(imagemUri!!);
             fotoUtilizador?.setImageBitmap(bitmap);
@@ -77,6 +98,12 @@ class Perfil : AppCompatActivity() {
             imagemUri = data.data;
             val bitmap = uriToBipmap(imagemUri!!);
             fotoUtilizador.setImageBitmap(bitmap)
-        }
+        }*/
     }
+
+    private fun fotoGaleria(){
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, RESULT_LOAD_IMAGE)
+    }
+
 }
