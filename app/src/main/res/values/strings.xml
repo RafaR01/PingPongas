@@ -30,6 +30,7 @@
     <string name="partidas_ganhas">Partidas Ganhas</string>
     <string name="win_streak">Win Streak</string>
     <string name="melhor_win_streak">Melhor Win Streak</string>
+    <string name="galeria">Galeria</string>
     <string-array name="adversarios">
         <item>André</item>
         <item>Andreia</item>
