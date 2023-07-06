@@ -1,11 +1,13 @@
 package pt.ipt.dama.pingpongas.retrofit.service
 
+import pt.ipt.dama.pingpongas.model.LoginData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.SignUpResult
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface SignUpService {
 
@@ -15,6 +17,13 @@ interface SignUpService {
      */
     @GET("users/nao_interessa_a_ninguem")
     fun listUsers(): Call<List<SignUpData>>
+
+    @GET("auth/{username}/{password}")
+    fun authenticate(
+        @Path("username") username: String,
+        @Path("password") password: String
+    ): Call<LoginData>
+
     /**
      * function to write a new user to API
      */
