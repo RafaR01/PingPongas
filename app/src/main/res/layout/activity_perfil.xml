@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Perfil">
+
+
+    <ImageView
+        android:id="@+id/imagemPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="136dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="@id/altImagem"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/nomeUtilizador"
+        android:layout_width="127dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/nomeutilizador"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/pontucao"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/melhorPontuacao"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="64dp"
+        android:ems="10"
+        android:text="@string/melhor_pontuacao"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/valMelhorPontuacao"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/partidasDisputadas"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginBottom="68dp"
+        android:ems="10"
+        android:text="@string/partidas_disputadas"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/valPartidasDisputadas"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/pontucao"
+        android:layout_width="124dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginBottom="64dp"
+        android:ems="10"
+        android:text="@string/pontua_o"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/melhorPontuacao"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/altImagem"
+        android:layout_width="127dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/alterar_imagem"
+        app:layout_constraintBottom_toBottomOf="@id/nomeUtilizador"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/valMelhorPontuacao"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="72dp"
+        app:layout_constraintBottom_toBottomOf="@id/percentVitoria"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/valPartidasDisputadas"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="@id/partidasGanhas"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/percentVitoria"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="64dp"
+        android:ems="10"
+        android:text="@string/de_vit_ria"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/valPercentVitoria"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/partidasGanhas"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginBottom="64dp"
+        android:ems="10"
+        android:text="@string/partidas_ganhas"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/valPartidasGanhas"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/valPercentVitoria"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="@id/winStreak"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/valPartidasGanhas"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="@id/melhorWinStreak"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/winStreak"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="68dp"
+        android:ems="10"
+        android:text="@string/win_streak"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/valWinStreak"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/melhorWinStreak"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginBottom="68dp"
+        android:ems="10"
+        android:text="@string/melhor_win_streak"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="@id/valBestWinStreak"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/valWinStreak"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/valBestWinStreak"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
