@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import pt.ipt.dama.pingpongas.MainActivity
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.model.LoginData
 import pt.ipt.dama.pingpongas.model.SignUpData
@@ -65,8 +66,8 @@ class login_page : AppCompatActivity() {
                         // Authentication successful
                         val userName = loginData.name
                         Toast.makeText(this@login_page, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
-//                      val intent = Intent(this@login_page, register_page::class.java)
-//                      startActivity(intent)
+                        val intent = Intent(this@login_page, MainActivity::class.java)
+                        startActivity(intent)
                     } else {
                         // Authentication failed (no matching user found)
                         Toast.makeText(this@login_page, "Acesso negado", Toast.LENGTH_LONG).show()
