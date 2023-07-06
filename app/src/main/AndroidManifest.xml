@@ -12,6 +12,7 @@
     <!-- real permissions -->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,16 +28,14 @@
             android:exported="false" />
         <activity
             android:name=".activity.login_page"
-            android:exported="false" />
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
         <activity
             android:name=".AdicionarPartida2"
-            android:exported="false" />
-        <activity
-            android:name=".TerminarSessao"
             android:exported="false" />
         <activity
             android:name=".Perfil"

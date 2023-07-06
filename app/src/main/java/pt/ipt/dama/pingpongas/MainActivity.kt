@@ -1,13 +1,9 @@
-package pt.ipt.dama.pingpongas.activity
+package pt.ipt.dama.pingpongas
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< HEAD:app/src/main/java/pt/ipt/dama/pingpongas/activity/MainActivity.kt
-import pt.ipt.dama.pingpongas.R
-=======
 import android.widget.Button
->>>>>>> 44389580bf6d22e49cc8676680b7da246c372064:app/src/main/java/pt/ipt/dama/pingpongas/MainActivity.kt
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

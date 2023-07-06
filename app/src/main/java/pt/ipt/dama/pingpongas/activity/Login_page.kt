@@ -65,8 +65,8 @@ class login_page : AppCompatActivity() {
                         // Authentication successful
                         val userName = loginData.name
                         Toast.makeText(this@login_page, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
-//                        val intent = Intent(this@login_page, register_page::class.java)
-//                        startActivity(intent)
+//                      val intent = Intent(this@login_page, register_page::class.java)
+//                      startActivity(intent)
                     } else {
                         // Authentication failed (no matching user found)
                         Toast.makeText(this@login_page, "Acesso negado", Toast.LENGTH_LONG).show()
