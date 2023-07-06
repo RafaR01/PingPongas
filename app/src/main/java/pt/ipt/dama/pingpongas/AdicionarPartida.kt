@@ -10,6 +10,13 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 
+
+
+class valorAdversario{
+    companion object{
+        var advEscolhido : String = "";
+    }
+}
 class AdicionarPartida : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +33,13 @@ class AdicionarPartida : AppCompatActivity() {
             criaPartida();
         }
 
-        if(selecUtilizadores != null){
-            val utilizadores = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaUtilizadores);
+        if(selecUtilizadores != null) {
+            val utilizadores =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, listaUtilizadores);
             utilizadores.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             selecUtilizadores.adapter = utilizadores;
         }
+
         fun mostraValor(view : View){
             Toast.makeText(this, "Seleciona Adversário " + selecUtilizadores.selectedItem.toString(),Toast.LENGTH_LONG).show();
         }
