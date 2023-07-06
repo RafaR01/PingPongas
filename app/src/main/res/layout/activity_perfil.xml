@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/imagemPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="136dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="152dp"
+        android:layout_marginBottom="72dp"
         app:layout_constraintBottom_toBottomOf="@id/altImagem"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -33,10 +33,10 @@
         android:layout_width="170dp"
         android:layout_height="50dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="60dp"
         android:ems="10"
-        android:text="@string/melhor_pontuacao"
         android:inputType="none"
+        android:text="@string/melhor_pontuacao"
         app:layout_constraintBottom_toBottomOf="@id/valMelhorPontuacao"
         app:layout_constraintLeft_toLeftOf="parent" />
 
