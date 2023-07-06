@@ -16,25 +16,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imagemUser1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="28dp"
         android:layout_marginBottom="132dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="@id/pontosUser1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imagemUser2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="252dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="244dp"
         android:layout_marginBottom="132dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="@id/pontosUser2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
         android:id="@+id/pontosUser1"
