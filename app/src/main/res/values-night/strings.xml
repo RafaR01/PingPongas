@@ -8,4 +8,26 @@
     <string name="senha">Senha</string>
     <string name="ainda_n_o_tens_conta">Ainda não tens conta?</string>
     <string name="criar_conta">Criar Conta</string>
+    <string name="menu">Menu</string>
+    <string name="adicionar_partida">Adicionar Partida</string>
+    <string name="ranking">Ranking</string>
+    <string name="historico">Histórico</string>
+    <string name="perfil">Perfil</string>
+    <string name="terminar_sessao">Terminar Sessão</string>
+    <string name="nova_partida">Nova Partida</string>
+    <string name="selecionar_adversario">Selecionar Adversário:</string>
+    <string name="pontos">Pontos</string>
+    <string name="partida">Partida</string>
+    <string name="jogador1">Jogador1</string>
+    <string name="jogador2">Jogador2</string>
+    <string name="nomeutilizador">NomeUtilizador</string>
+    <string name="melhor_pontua_o">Melhor Pontuação</string>
+    <string name="adicionar_partida_2">Adicionar Partida</string>
+    <string name="partidas_disputadas">Partidas Disputadas</string>
+    <string name="pontua_o">Pontuação:</string>
+    <string name="alterar_imagem">Alterar Imagem</string>
+    <string name="de_vit_ria">% de Vitória</string>
+    <string name="partidas_ganhas">Partidas Ganhas</string>
+    <string name="win_streak">Win Streak</string>
+    <string name="melhor_win_streak">Melhor Win Streak</string>
 </resources>

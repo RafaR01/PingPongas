@@ -6,6 +6,13 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+    <!-- permissions that our app needs -->
+    <!-- use the rear or the front camera -->
+    <uses-feature android:name="android.hardware.camera.any"/>
+    <!-- real permissions -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,14 +28,29 @@
             android:exported="false" />
         <activity
             android:name=".activity.login_page"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".AdicionarPartida2"
+            android:exported="false" />
+        <activity
+            android:name=".Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Historico"
+            android:exported="false" />
+        <activity
+            android:name=".Ranking"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarPartida"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
         </activity>
     </application>

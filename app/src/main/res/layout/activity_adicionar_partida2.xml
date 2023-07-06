@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdicionarPartida2">
+
+    <Button
+        android:id="@+id/partida"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/adicionar_partida_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagemUser1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="132dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/pontosUser1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagemUser2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="244dp"
+        android:layout_marginBottom="132dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/pontosUser2"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/pontosUser1"
+        android:layout_width="135dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="172dp"
+        android:ems="10"
+        android:hint="@string/pontos"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@id/partida"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/pontosUser2"
+        android:layout_width="135dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="252dp"
+        android:layout_marginBottom="172dp"
+        android:ems="10"
+        android:hint="@string/pontos"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@id/partida"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/lblPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="180dp"
+        android:layout_marginBottom="224dp"
+        android:text="@string/partida"
+        app:layout_constraintBottom_toBottomOf="@id/imagemUser1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/nomeJog1"
+        android:layout_width="135dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="76dp"
+        android:text="@string/jogador1"
+        app:layout_constraintBottom_toBottomOf="@id/pontosUser1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/nomeJog2"
+        android:layout_width="135dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="252dp"
+        android:layout_marginBottom="76dp"
+        android:text="@string/jogador2"
+        app:layout_constraintBottom_toBottomOf="@id/pontosUser2"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

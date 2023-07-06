@@ -4,7 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
+
+    <TextView
+        android:id="@+id/menuinicial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="188dp"
+        android:layout_marginBottom="128dp"
+        android:text="@string/menu"
+        app:layout_constraintBottom_toBottomOf="@id/addpartida"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/addpartida"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/adicionar_partida"
+        app:layout_constraintBottom_toBottomOf="@id/ranking"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/botoesretangulares"
+        />
+
+    <Button
+        android:id="@+id/ranking"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="120dp"
+        android:text="@string/ranking"
+        app:layout_constraintBottom_toBottomOf="@id/historico"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/botoesretangulares"/>
+
+    <Button
+        android:id="@+id/historico"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="116dp"
+        android:text="@string/historico"
+        app:layout_constraintBottom_toBottomOf="@id/perfil"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/botoesretangulares" />
+
+    <Button
+        android:id="@+id/perfil"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/perfil"
+        app:layout_constraintBottom_toBottomOf="@id/termsessao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/botoesretangulares" />
+
+    <Button
+        android:id="@+id/termsessao"
+        android:layout_width="215dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/terminar_sessao"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/botoesretangulares"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
