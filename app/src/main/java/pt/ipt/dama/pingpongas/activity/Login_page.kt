@@ -4,16 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import pt.ipt.dama.pingpongas.MainActivity
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.model.LoginData
-import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,9 +61,11 @@ class login_page : AppCompatActivity() {
                     val loginData = response.body()
                     if (loginData != null) {
                         // Authentication successful
+                        val userId = loginData.id
                         val userName = loginData.name
                         Toast.makeText(this@login_page, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
                         val intent = Intent(this@login_page, MainActivity::class.java)
+                        intent.putExtra("loggedId", "$userId")
                         startActivity(intent)
                     } else {
                         // Authentication failed (no matching user found)

@@ -1,7 +1,8 @@
-package pt.ipt.dama.pingpongas
+package pt.ipt.dama.pingpongas.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import pt.ipt.dama.pingpongas.R
 
 class Ranking : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
