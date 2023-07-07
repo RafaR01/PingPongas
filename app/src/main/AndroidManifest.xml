@@ -36,22 +36,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdicionarPartida2"
+            android:name=".activity.AdicionarPartida2"
             android:exported="false" />
         <activity
-            android:name=".Perfil"
+            android:name=".activity.Perfil"
             android:exported="false" />
         <activity
-            android:name=".Historico"
+            android:name=".activity.Historico"
             android:exported="false" />
         <activity
-            android:name=".Ranking"
+            android:name=".activity.Ranking"
             android:exported="false" />
         <activity
-            android:name=".AdicionarPartida"
+            android:name=".activity.AdicionarPartida"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
         </activity>
     </application>

@@ -1,10 +1,11 @@
-package pt.ipt.dama.pingpongas
+package pt.ipt.dama.pingpongas.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import pt.ipt.dama.pingpongas.R
 
 class AdicionarPartida2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

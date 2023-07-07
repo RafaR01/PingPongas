@@ -1,14 +1,19 @@
-package pt.ipt.dama.pingpongas
+package pt.ipt.dama.pingpongas.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import pt.ipt.dama.pingpongas.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Obtain the Logged User Id, passed trough intent
+        val loggedId = intent.getStringExtra("loggedId")
+
         /**
          * Inicialização dos botões que estão no ecrã principal
          */
@@ -35,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnPerfil.setOnClickListener{
-            verPerfil();
+            verPerfil(loggedId);
         }
 
         btnTermSessao.setOnClickListener{
@@ -74,8 +79,9 @@ class MainActivity : AppCompatActivity() {
      * Função que vai abrir um novo layout no qual
      * permite ao utilizador utilizar a câmera para tirar uma foto de perfil
      */
-    private fun verPerfil(){
+    private fun verPerfil(loggedId: String?) {
         val intent = Intent(this, Perfil::class.java)
+        intent.putExtra("loggedId", "$loggedId")
         startActivity(intent)
     }
 
