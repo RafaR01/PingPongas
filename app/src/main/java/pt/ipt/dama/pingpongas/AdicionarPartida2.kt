@@ -67,7 +67,7 @@ class AdicionarPartida2 : AppCompatActivity() {
             errorMessage.visibility = View.VISIBLE
             errorMessage.text = "Resultado inválido. O jogo não pode acabar empatado."
         }
-        if(pontosJogador1 >= 11 && pontosJogador2 >=11){
+        if(pontosJogador1 >= 10 && pontosJogador2 >=10){
             val diferenca = pontosJogador1-pontosJogador2;
             if(diferenca.absoluteValue == 2){
                 if(pontosJogador1 > pontosJogador2) {
