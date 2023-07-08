@@ -33,6 +33,15 @@ interface SignUpService {
     ): Call<StatsData>
 
     /**
+     * function to read data from API
+     * transform data in JSON format to Kotlin objects
+     */
+    @GET("/users/{user_id}/nao_interessa_a_ninguem")
+    fun userData(
+        @Path("user_id") user_id: Int
+    ): Call<SignUpData>
+
+    /**
      * function to write a new user to API
      */
     @POST("users/nao_interessa_a_ninguem")

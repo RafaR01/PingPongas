@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -24,6 +25,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import pt.ipt.dama.pingpongas.R
+import pt.ipt.dama.pingpongas.model.LoginData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.StatsData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
@@ -54,14 +56,7 @@ class Perfil : AppCompatActivity() {
         var loggedIdInt = loggedId!!.toInt()
         userStats(loggedIdInt)
 
-        fotoUtilizador = findViewById(R.id.imagemPerfil);
-
-        val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$loggedId.jpg" // Replace with your image URL
-
-        Picasso.get()
-            .load(imageUrl)
-            .networkPolicy(NetworkPolicy.NO_STORE)
-            .into(fotoUtilizador)
+        userData(loggedIdInt)
 
         val btnImagem : Button = findViewById(R.id.altImagem);
         val btnImagemGaleria : Button = findViewById(R.id.fotoGaleria);
@@ -198,6 +193,41 @@ class Perfil : AppCompatActivity() {
         })
     }
 
+    fun userData(userId: Int){
+        val call = RetrofitInitializer().noteService().userData(userId)
+
+        call.enqueue(object : Callback<SignUpData?> {
+            override fun onResponse(call: Call<SignUpData?>, response: Response<SignUpData?>) {
+                if (response.isSuccessful) {
+                    val userData = response.body()
+                    if (userData != null) {
+                        // Authentication successful
+
+                        fotoUtilizador = findViewById(R.id.imagemPerfil);
+
+                        val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/${userData.image}" // Replace with your image URL
+
+                        Picasso.get()
+                            .load(imageUrl)
+                            .networkPolicy(NetworkPolicy.NO_STORE)
+                            .into(fotoUtilizador)
+
+                        Toast.makeText(this@Perfil, "Dados Obtidos", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this@Perfil, "Erro ao obter dados", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // Handle non-successful response (e.g., 404 or 500)
+                    Toast.makeText(this@Perfil, "Erro ao obter dados", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<SignUpData?>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
+    }
+
     /*
     * Stats
     * */
@@ -218,6 +248,12 @@ class Perfil : AppCompatActivity() {
                         val victoryChance = statsData.victoryChance
                         val gamesPlayed = statsData.gamesPlayed
                         val bestScore = statsData.bestScore
+
+                        var quadradoVictoryChance = findViewById<TextView>(R.id.textView10)
+
+                        if(victoryChance > 60)
+                            quadradoVictoryChance.setBackgroundColor(Color.parseColor("#24F08D"))
+
                         var valor = findViewById<TextView>(R.id.textView4)
                         valor.text = userId.toString()
 
