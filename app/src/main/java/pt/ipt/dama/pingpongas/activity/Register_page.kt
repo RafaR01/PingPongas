@@ -87,7 +87,7 @@ class register_page : AppCompatActivity() {
      * add a random user to API
      */
     private fun addNewUser(name: String, username: String, email: String, password: String) {
-        val user =  SignUpData(email, username, name, password)
+        val user =  SignUpData(email, username, name, password, "default.jpg")
 
         addUser(user){
             Toast.makeText(this,"Conta criada com sucesso",Toast.LENGTH_LONG).show()
