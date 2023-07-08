@@ -34,6 +34,7 @@ class AdicionarPartida2 : AppCompatActivity() {
         nomeAdversario.text = nomeadv.toString()
         btnAdicionarPartida.setOnClickListener {
             pontosPartida(errorMessage)
+            adicionarPartida()
         }
 
 
@@ -42,8 +43,6 @@ class AdicionarPartida2 : AppCompatActivity() {
     private fun pontosPartida(errorMessage: TextView) {
         val pontosJogador1Text = pontosJogador1view.text.toString().trim()
         val pontosJogador2Text = pontosJogador2view.text.toString().trim()
-        var winner = 0;
-        var loser = 0;
 
         if(pontosJogador1Text.isEmpty() || pontosJogador2Text.isEmpty()){
             errorMessage.visibility = View.VISIBLE
@@ -57,15 +56,20 @@ class AdicionarPartida2 : AppCompatActivity() {
         if (pontosJogador1 < 11 && pontosJogador2 < 11) {
             errorMessage.visibility = View.VISIBLE
             errorMessage.text = "Resultado inválido. Para ser considerado válido, um jogador precisa ter pelo menos 11 pontos."
+            pontosPartida(errorMessage)
         }
         if(pontosJogador1 == 11 && pontosJogador2 < 10){
             errorMessage.visibility = View.VISIBLE
-            errorMessage.text = "Resultado inválido. Para ser considerado válido, um jogador precisa ter pelo menos 11 pontos."
-            //adicionarPartida();
+            errorMessage.text = "Jogador1 ganhou"
+        }
+        if(pontosJogador1 < 10 && pontosJogador2 ==11){
+            errorMessage.visibility = View.VISIBLE
+            errorMessage.text = "Jogador2 ganhou."
         }
         if(pontosJogador1 ==  pontosJogador2){
             errorMessage.visibility = View.VISIBLE
             errorMessage.text = "Resultado inválido. O jogo não pode acabar empatado."
+            pontosPartida(errorMessage)
         }
         if(pontosJogador1 >= 10 && pontosJogador2 >=10){
             val diferenca = pontosJogador1-pontosJogador2;
