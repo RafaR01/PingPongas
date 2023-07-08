@@ -6,26 +6,37 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import pt.ipt.dama.pingpongas.R
-import pt.ipt.dama.pingpongas.model.LoginData
+import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.StatsData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.FileDescriptor
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 
 class Perfil : AppCompatActivity() {
 
@@ -34,8 +45,9 @@ class Perfil : AppCompatActivity() {
     private val RESULT_LOAD_IMAGE = 123;
     private val IMAGE_CAPTURE_CODE = 654;
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("Tag", "entrou");
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perfil)
+        setContentView(pt.ipt.dama.pingpongas.R.layout.activity_perfil)
 
         //Obtain the Logged User Id, passed trough intent
         val loggedId = intent.getStringExtra("loggedId")
@@ -43,7 +55,16 @@ class Perfil : AppCompatActivity() {
         userStats(loggedIdInt)
 
         fotoUtilizador = findViewById(R.id.imagemPerfil);
+
+        val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$loggedId.jpg" // Replace with your image URL
+
+        Picasso.get()
+            .load(imageUrl)
+            .networkPolicy(NetworkPolicy.NO_STORE)
+            .into(fotoUtilizador)
+
         val btnImagem : Button = findViewById(R.id.altImagem);
+        val btnImagemGaleria : Button = findViewById(R.id.fotoGaleria);
 
         if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
             checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
@@ -56,7 +77,10 @@ class Perfil : AppCompatActivity() {
 
         btnImagem.setOnClickListener {
             abrirCamera();
-            true;
+        }
+
+        btnImagemGaleria.setOnClickListener {
+            fotoGaleria();
         }
     }
 
@@ -70,31 +94,113 @@ class Perfil : AppCompatActivity() {
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
     }
 
-    private fun uriToBipmap(selectedFileUri: Uri): Bitmap? {
-        try {
-            val parcelFileDescriptor = contentResolver.openFileDescriptor(selectedFileUri,"r");
-            val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor;
-            val image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-            parcelFileDescriptor.close();
-            return image;
-        }catch (e: IOException){
-            return null;
-        }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == IMAGE_CAPTURE_CODE && resultCode == Activity.RESULT_OK){
-            val bitmap = uriToBipmap(imagemUri!!);
-            fotoUtilizador?.setImageBitmap(bitmap);
-        }
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && data!=null){
-            imagemUri = data.data;
-            val bitmap = uriToBipmap(imagemUri!!);
-            fotoUtilizador.setImageBitmap(bitmap)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                IMAGE_CAPTURE_CODE -> {
+                    val bitmap = uriToBitmap(imagemUri!!)
+                    //fotoUtilizador.setImageBitmap(bitmap)
+                    val loggedId = intent.getStringExtra("loggedId")
+                    var loggedIdInt = loggedId!!.toInt()
+                    val userId = loggedIdInt // Replace with the actual user ID
+
+                    val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$userId.jpg" // Replace with your image URL
+
+                    val timeStamp = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())
+                    val fileName = "IMG$timeStamp.jpg"
+                    val imageFile = File(getRealPathFromURI(imagemUri!!))
+                    uploadImage(userId, imageFile)
+                    Picasso.get()
+                        .invalidate(imageUrl)
+
+                    Picasso.get()
+                        .load(imageUrl)
+                        .into(fotoUtilizador)
+                }
+                RESULT_LOAD_IMAGE -> {
+                    if (data != null) {
+                        val imagemUri = data.data
+                        val bitmap = uriToBitmap(imagemUri!!)
+                        //fotoUtilizador.setImageBitmap(bitmap)
+                        val loggedId = intent.getStringExtra("loggedId")
+                        var loggedIdInt = loggedId!!.toInt()
+                        val userId = loggedIdInt // Replace with the actual user ID
+
+                        val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$userId.jpg" // Replace with your image URL
+
+                        val timeStamp = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())
+                        val fileName = "IMG$timeStamp.jpg"
+                        val imageFile = File(getRealPathFromURI(imagemUri!!))
+                        uploadImage(userId, imageFile)
+
+                        Picasso.get()
+                            .invalidate(imageUrl)
+
+                        Picasso.get()
+                            .load(imageFile)
+                            .into(fotoUtilizador)
+                    }
+                }
+            }
         }
     }
 
+    private fun uriToBitmap(uri:Uri): Bitmap{
+        return MediaStore.Images.Media.getBitmap(contentResolver, uri)
+    }
+
+    private fun getRealPathFromURI(uri: Uri): String {
+        var filePath = ""
+        val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, filePathColumn, null, null, null)
+        cursor?.let {
+            it.moveToFirst()
+            val columnIndex = it.getColumnIndex(filePathColumn[0])
+            filePath = it.getString(columnIndex)
+            it.close()
+        }
+        return filePath
+    }
+
+    private fun fotoGaleria(){
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, RESULT_LOAD_IMAGE)
+    }
+
+    fun uploadImage(userId: Int, imageFile: File) {
+        val requestFile = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
+        val body = MultipartBody.Part.createFormData("imagem", imageFile.name, requestFile)
+
+        val call: Call<SignUpData> = RetrofitInitializer().noteService().uploadImage(userId, body)
+        call.enqueue(object : Callback<SignUpData> {
+            override fun onResponse(call: Call<SignUpData>, response: Response<SignUpData>) {
+                if (response.isSuccessful) {
+                    val loggedId = intent.getStringExtra("loggedId")
+                    val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$loggedId.jpg"
+                    Picasso.get()
+                        .invalidate(imageUrl)
+
+                    Picasso.get()
+                        .load(imageFile)
+                        .into(fotoUtilizador)
+                    Toast.makeText(this@Perfil, "Imagem Carregada", Toast.LENGTH_LONG).show()
+
+                } else {
+                    Toast.makeText(this@Perfil, "Ocorreu um erro", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<SignUpData>, t: Throwable) {
+                Log.d("tag", t.message.toString())
+                Toast.makeText(this@Perfil, "Erro de conexão", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    /*
+    * Stats
+    * */
     private fun userStats(user_id : Int) {
         val call = RetrofitInitializer().noteService().userStats(user_id)
 
@@ -137,18 +243,14 @@ class Perfil : AppCompatActivity() {
                         valor8.text = bestScore.toString()
 
                         Toast.makeText(this@Perfil, "Stats obitdos com sucesso", Toast.LENGTH_LONG).show()
-//                        val intent = Intent(this@Perfil, MainActivity::class.java)
-//                        startActivity(intent)
                         intent.putExtra("loggedId", "$userId")
                     } else {
                         // Authentication failed (no matching user found)
-                        Toast.makeText(this@Perfil, "Eish", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Perfil, "Ocorreu um erro", Toast.LENGTH_LONG).show()
                     }
                 } else {
                     // Handle non-successful response (e.g., 404 or 500)
-                    Toast.makeText(this@Perfil, "Eish", Toast.LENGTH_LONG).show()
-//                    val intent = Intent(this@Perfil, register_page::class.java)
-//                    startActivity(intent)
+                    Toast.makeText(this@Perfil, "Ocorreu um erro", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -156,8 +258,6 @@ class Perfil : AppCompatActivity() {
                 // Handle network failure
                 Log.d("tag",t.message.toString())
                 Toast.makeText(this@Perfil, "Erro de conexão", Toast.LENGTH_LONG).show()
-//                val intent = Intent(this@Perfil, register_page::class.java)
-//                startActivity(intent)
                 t.printStackTrace()
             }
         })

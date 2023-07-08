@@ -155,192 +155,14 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imagemPerfil"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="84dp"
-        app:civ_border_color="@color/black"
-        app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="@id/altImagem"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="128dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginEnd="128dp"
         android:layout_marginBottom="44dp"
         app:civ_border_color="@color/black"
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="@id/altImagem"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/nomeUtilizador"
-        android:layout_width="127dp"
-        android:layout_height="33dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginBottom="52dp"
-        android:inputType="none"
-        android:text="@string/nomeutilizador"
-        app:layout_constraintBottom_toBottomOf="@id/pontucao"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/melhorPontuacao"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="68dp"
-        android:ems="10"
-        android:inputType="none"
-        android:text="@string/melhor_pontuacao"
-        app:layout_constraintBottom_toBottomOf="@id/valMelhorPontuacao"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/partidasDisputadas"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginBottom="68dp"
-        android:ems="10"
-        android:text="@string/partidas_disputadas"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="@id/valPartidasDisputadas"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/pontucao"
-        android:layout_width="124dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginBottom="64dp"
-        android:ems="10"
-        android:text="@string/pontuacao"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="@id/melhorPontuacao"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="84dp"
-        app:civ_border_color="@color/black"
-        app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="@id/altImagem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/altImagem"
-        android:layout_width="127dp"
-        android:layout_height="38dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginBottom="52dp"
-        android:text="@string/alterar_imagem"
-        app:layout_constraintBottom_toBottomOf="@id/nomeUtilizador"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/valMelhorPontuacao"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="@id/percentVitoria"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/valPartidasDisputadas"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginBottom="68dp"
-        app:layout_constraintBottom_toBottomOf="@id/partidasGanhas"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/percentVitoria"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="64dp"
-        android:ems="10"
-        android:text="@string/de_vit_ria"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="@id/valPercentVitoria"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/partidasGanhas"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginBottom="64dp"
-        android:ems="10"
-        android:text="@string/partidas_ganhas"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="@id/valPartidasGanhas"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/valPercentVitoria"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="@id/winStreak"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/valPartidasGanhas"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="@id/melhorWinStreak"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/winStreak"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="68dp"
-        android:ems="10"
-        android:text="@string/win_streak"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="@id/valWinStreak"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <EditText
-        android:id="@+id/melhorWinStreak"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginBottom="68dp"
-        android:ems="10"
-        android:text="@string/melhor_win_streak"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="@id/valBestWinStreak"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/valWinStreak"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/valBestWinStreak"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="28dp"
-        android:text="@string/alterar_imagem"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -348,11 +170,24 @@
         android:id="@+id/fotoGaleria"
         android:layout_width="127dp"
         android:layout_height="38dp"
-        android:layout_marginLeft="224dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginLeft="216dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/galeria"
-        app:layout_constraintBottom_toBottomOf="@id/nomeUtilizador"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/altImagem"
+        android:layout_width="127dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginBottom="36dp"
+        android:text="@string/alterar_imagem"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
