@@ -36,9 +36,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AdicionarPartida2"
-            android:exported="false" />
-        <activity
             android:name=".activity.Perfil"
             android:exported="false" />
         <activity

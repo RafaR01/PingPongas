@@ -1,8 +1,8 @@
-package pt.ipt.dama.pingpongas
+package pt.ipt.dama.pingpongas.activity
 
+import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
 import android.view.View
@@ -11,10 +11,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import pt.ipt.dama.pingpongas.R
+import pt.ipt.dama.pingpongas.activity.MainActivity
+import pt.ipt.dama.pingpongas.activity.valorAdversario
 import kotlin.math.absoluteValue
 import kotlin.properties.Delegates
 
-class AdicionarPartida2 : AppCompatActivity() {
+class AdicionarPartidas2 : AppCompatActivity() {
 
     private lateinit var pontosJogador1view: EditText
     private lateinit var pontosJogador2view: EditText
@@ -98,4 +101,3 @@ class AdicionarPartida2 : AppCompatActivity() {
         startActivity(intent)
     }
 }
-

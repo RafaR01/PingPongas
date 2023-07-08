@@ -44,7 +44,7 @@ class AdicionarPartida : AppCompatActivity() {
     }
 
     private fun criaPartida(){
-        val intent = Intent(this, AdicionarPartida2::class.java)
+        val intent = Intent(this, AdicionarPartidas2::class.java)
         startActivity(intent)
     }
 }
