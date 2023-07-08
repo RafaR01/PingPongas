@@ -11,5 +11,6 @@ class SignUpData (
     @SerializedName("email") val email: String,
     @SerializedName("username") val username: String,
     @SerializedName("name") val name: String,
-    @SerializedName("password") val password: String
+    @SerializedName("password") val password: String,
+    @SerializedName("image") val image: String
 )
