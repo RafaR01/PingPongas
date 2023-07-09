@@ -2,6 +2,7 @@ package pt.ipt.dama.pingpongas.retrofit.service
 
 import okhttp3.MultipartBody
 import pt.ipt.dama.pingpongas.model.LoginData
+import pt.ipt.dama.pingpongas.model.PontosData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.model.imageData
@@ -16,6 +17,13 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface SignUpService {
+
+    /**
+     * function to read data from API
+     * transform data in JSON format to Kotlin objects
+     */
+    @GET("users/nao_interessa_a_ninguem")
+    fun listUsers(): Call<List<SignUpData>>
 
     @GET("auth/{username}/{password}")
     fun authenticate(
@@ -32,10 +40,6 @@ interface SignUpService {
         @Path("user_id") user_id: Int
     ): Call<StatsData>
 
-    /**
-     * function to read data from API
-     * transform data in JSON format to Kotlin objects
-     */
     @GET("/users/{user_id}/nao_interessa_a_ninguem")
     fun userData(
         @Path("user_id") user_id: Int
@@ -53,5 +57,10 @@ interface SignUpService {
         @Path("user_id") userId: Int,
         @Part imagem: MultipartBody.Part
     ): Call<SignUpData>
+
+    @POST("/matches/nao_interessa_a_ninguem")
+    fun sendPontosAPI(@Body data:PontosData): Call<PontosData>
+    @GET("users/{user_id}/nao_interessa_a_ninguem")
+    fun getUser( @Path("user_id") user_id: Int) : Call<SignUpData>
 
 }
