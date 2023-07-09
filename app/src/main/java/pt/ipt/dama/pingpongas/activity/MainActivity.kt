@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         //Obtain the Logged User Id, passed trough intent
         val loggedId = intent.getStringExtra("loggedId")
+        val nomeJogador = intent.getStringExtra("loggedUsername")
 
         /**
          * Inicialização dos botões que estão no ecrã principal
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
          * o utlizador toca neles
          */
         btnAdicionarPartida.setOnClickListener{
-            adicionaPartida();
+            adicionaPartida(nomeJogador);
         }
 
         btnRanking.setOnClickListener{
@@ -43,17 +44,19 @@ class MainActivity : AppCompatActivity() {
             verPerfil(loggedId);
         }
 
+        /**
         btnTermSessao.setOnClickListener{
             termSessao();
-        }
+        }*/
     }
 
     /**
      * Funcção adicionaPartida vai abrir um novo layout no qual
      * vai permitir o user selecionar o adversário
      */
-    private fun adicionaPartida(){
+    private fun adicionaPartida(nomeJogador: String?){
         val intent = Intent(this, AdicionarPartida::class.java)
+        intent.putExtra("loggedUsername", "$nomeJogador" )
         startActivity(intent)
     }
 
@@ -87,8 +90,10 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Função que termina a sessão do user
-     */
+
     private fun termSessao(){
-        finish()
+        val intent = Intent(this, Login_page::class.java)
+        startActivity(intent)
     }
+     */
 }
