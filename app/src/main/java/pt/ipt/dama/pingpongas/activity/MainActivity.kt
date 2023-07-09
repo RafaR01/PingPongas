@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         //Obtain the Logged User Id, passed trough intent
         val loggedId = intent.getStringExtra("loggedId")
-        val nomeJogador = intent.getStringExtra("loggedUsername")
+        val nomeJogador = intent.getStringExtra("loggeduser")
 
         /**
          * Inicialização dos botões que estão no ecrã principal
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun adicionaPartida(nomeJogador: String?){
         val intent = Intent(this, AdicionarPartida::class.java)
-        intent.putExtra("loggedUsername", "$nomeJogador" )
+        intent.putExtra("loggeduser", "$nomeJogador" )
         startActivity(intent)
     }
 

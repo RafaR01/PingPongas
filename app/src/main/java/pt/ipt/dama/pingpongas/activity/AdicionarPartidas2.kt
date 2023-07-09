@@ -52,7 +52,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
     }
 
     private fun pontosPartida(errorMessage: TextView) {
-        val nomeJogador = intent.getStringExtra("loggedUsername")
+        val nomeJogador = intent.getStringExtra("loggeduser")
         val nomeAdversario = intent.getStringExtra("username")
         val pontosJogador1Text = pontosJogador1view.text.toString().trim()
         val pontosJogador2Text = pontosJogador2view.text.toString().trim()
@@ -116,6 +116,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
 
     private fun adicionarPartida(){
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("loggeduser", "$nomeJogador" )
         startActivity(intent)
     }
 
