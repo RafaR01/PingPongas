@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         //Obtain the Logged User Id, passed trough intent
         val loggedId = intent.getStringExtra("loggedId")
+        val loggedUser = intent.getStringExtra("loggedUser")
 
         /**
          * Inicialização dos botões que estão no ecrã principal

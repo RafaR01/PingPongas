@@ -274,6 +274,7 @@ class Perfil : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<SignUpData?>, t: Throwable) {
+                Toast.makeText(this@Perfil, "Erro de conexão", Toast.LENGTH_LONG).show()
                 t.printStackTrace()
             }
         })
@@ -292,6 +293,7 @@ class Perfil : AppCompatActivity() {
                     if (statsData != null) {
                         // Authentication successful
                         val userId = statsData.user_id
+                        val userName = statsData.name
                         val userMatches = statsData.gamesPlayed
                         val bestWinStreak = statsData.bestWinStreak
                         val winStreak = statsData.winStreak
@@ -305,8 +307,8 @@ class Perfil : AppCompatActivity() {
                         if(victoryChance > 60)
                             quadradoVictoryChance.setBackgroundColor(Color.parseColor("#24F08D"))
 
-                        var valor = findViewById<TextView>(R.id.textView4)
-                        valor.text = userId.toString()
+//                        var valor = findViewById<TextView>(R.id.textView4)
+//                        valor.text = userId.toString()
 
                         var valor2 = findViewById<TextView>(R.id.textView9)
                         valor2.text = userMatches.toString()
@@ -328,6 +330,9 @@ class Perfil : AppCompatActivity() {
 
                         var valor8 = findViewById<TextView>(R.id.textView4)
                         valor8.text = bestScore.toString()
+
+                        var valor9 = findViewById<TextView>(R.id.textView7)
+                        valor9.text = userName
 
                         Toast.makeText(this@Perfil, "Stats obitdos com sucesso", Toast.LENGTH_LONG).show()
                         intent.putExtra("loggedId", "$userId")

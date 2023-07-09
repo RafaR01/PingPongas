@@ -62,7 +62,6 @@ class login_page : AppCompatActivity() {
                     if (loginData != null) {
                         // Authentication successful
                         val userId = loginData.id
-                        val userName = loginData.name
                         Toast.makeText(this@login_page, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
                         val intent = Intent(this@login_page, MainActivity::class.java)
                         intent.putExtra("loggedId", "$userId")

@@ -9,6 +9,7 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayout
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.activity.UserListAdapter
 import pt.ipt.dama.pingpongas.model.MatchData
@@ -43,14 +44,18 @@ class Historico : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val matchData = response.body()
                     if (matchData != null) {
+                        if (matchData.size == 0) {
+                            val textView : TextView = findViewById(R.id.textView18)
+                            textView.visibility = View.VISIBLE
+                        }
+                        else {
+                            val sortedData = matchData.sortedByDescending { it.id }
 
-                        val sortedData = matchData.sortedByDescending { it.id }
-
-                        adapter.clear()
-                        adapter.addAll(sortedData)
-                        adapter.notifyDataSetChanged()
-
-                        Toast.makeText(this@Historico, "Dados Obtidos", Toast.LENGTH_LONG).show()
+                            adapter.clear()
+                            adapter.addAll(sortedData)
+                            adapter.notifyDataSetChanged()
+                            Toast.makeText(this@Historico, "Dados Obtidos", Toast.LENGTH_LONG).show()
+                        }
                     } else {
                         Toast.makeText(this@Historico, "Erro ao obter dados", Toast.LENGTH_LONG).show()
                     }
@@ -61,6 +66,7 @@ class Historico : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<MatchData>>, t: Throwable) {
+                Toast.makeText(this@Historico, "Erro de conexão", Toast.LENGTH_LONG).show()
                 t.printStackTrace()
             }
         })

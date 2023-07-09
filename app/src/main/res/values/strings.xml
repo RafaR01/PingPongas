@@ -40,6 +40,7 @@
     <string name="meu_hist_rico">Meu Histórico</string>
     <string name="perdedor">Perdedor</string>
     <string name="vencedor">Vencedor</string>
+    <string name="ainda_n_o_existem_partidas_disputadas">Ainda não existem partidas disputadas.</string>
     <string-array name="adversarios">
         <item>André</item>
         <item>Andreia</item>
