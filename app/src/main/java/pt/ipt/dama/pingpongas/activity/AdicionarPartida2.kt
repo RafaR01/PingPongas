@@ -1,37 +1,32 @@
 package pt.ipt.dama.pingpongas.activity
 
 import androidx.appcompat.app.AppCompatActivity
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import org.w3c.dom.Text
+import de.hdodenhof.circleimageview.CircleImageView
 import pt.ipt.dama.pingpongas.R
-import pt.ipt.dama.pingpongas.activity.MainActivity
 import pt.ipt.dama.pingpongas.model.PontosData
-import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.absoluteValue
-import kotlin.properties.Delegates
 
-class AdicionarPartidas2 : AppCompatActivity() {
+class AdicionarPartida2 : AppCompatActivity() {
 
     private lateinit var pontosJogador1view: EditText
     private lateinit var pontosJogador2view: EditText
     private lateinit var btnAdicionarPartida: Button
     private lateinit var nomeJogador : TextView
-    private lateinit var nomeAdversario : TextView
     private lateinit var nomeJogadorTextView : TextView
     private lateinit var nomeAdversarioTextView : TextView
+    private lateinit var imagemJogador : CircleImageView
+    private lateinit var imagemAdversario : CircleImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adicionar_partida2)
@@ -50,7 +45,6 @@ class AdicionarPartidas2 : AppCompatActivity() {
         nomeAdversarioTextView.text = nomeAdversario
 
         btnAdicionarPartida.setOnClickListener {
-
             pontosPartida(errorMessage)
             adicionarPartida()
         }
@@ -138,7 +132,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
                  */
                 override fun onResponse(call: Call<PontosData>, response: Response<PontosData>) {
                     val pontosData=response.body()
-                    Toast.makeText(this@AdicionarPartidas2, "Pontos enviados com sucesso", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AdicionarPartida2, "Pontos enviados com sucesso", Toast.LENGTH_LONG).show()
                 }
 
                 /**
@@ -147,9 +141,8 @@ class AdicionarPartidas2 : AppCompatActivity() {
                  */
                 override fun onFailure(call: Call<PontosData>, t: Throwable) {
                     t.printStackTrace()
-                    Toast.makeText(this@AdicionarPartidas2, "Eish", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AdicionarPartida2, "Eish", Toast.LENGTH_LONG).show()
                 }
-
             }
         )
     }

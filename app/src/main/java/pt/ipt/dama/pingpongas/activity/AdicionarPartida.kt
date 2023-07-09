@@ -31,6 +31,7 @@ class AdicionarPartida : AppCompatActivity() {
         val btnNovaPartida: Button = findViewById(R.id.novapartida)
         selecUtilizadores = findViewById(R.id.selectadvr)
 
+
         val nomeJogador = intent.getStringExtra("loggeduser")
 
         // Chamar a função listUsers() para obter a lista de usuários
@@ -89,7 +90,7 @@ class AdicionarPartida : AppCompatActivity() {
     }
 
     private fun criaPartida(nomeJogador: String?, username: String) {
-        val intent = Intent(this, AdicionarPartidas2::class.java)
+        val intent = Intent(this, AdicionarPartida2::class.java)
         intent.putExtra("loggeduser", nomeJogador)
         intent.putExtra("username", username)
         startActivity(intent)
