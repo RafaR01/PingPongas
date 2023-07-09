@@ -2,6 +2,7 @@ package pt.ipt.dama.pingpongas.retrofit.service
 
 import okhttp3.MultipartBody
 import pt.ipt.dama.pingpongas.model.LoginData
+import pt.ipt.dama.pingpongas.model.MatchData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.model.imageData
@@ -34,6 +35,9 @@ interface SignUpService {
 
     @GET("/stats/nao_interessa_a_ninguem")
     fun usersStats(): Call<List<StatsData>>
+
+    @GET("/matches/nao_interessa_a_ninguem")
+    fun getMatches(): Call<List<MatchData>>
 
     /**
      * function to read data from API

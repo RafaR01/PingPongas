@@ -31,4 +31,13 @@
     <string name="win_streak">Win Streak</string>
     <string name="melhor_win_streak">Melhor Win Streak</string>
     <string name="galeria">Galeria</string>
+    <string name="fragment_one">fragment_one</string>
+    <string name="fragment_two">fragment_two</string>
+    <string name="fragment_three">fragment_three</string>
+    <string name="test1">Test1</string>
+    <string name="test2">Test2</string>
+    <string name="hist_rico_geral">Histórico Geral</string>
+    <string name="meu_hist_rico">Meu Histórico</string>
+    <string name="perdedor">Perdedor</string>
+    <string name="vencedor">Vencedor</string>
 </resources>

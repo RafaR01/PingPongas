@@ -10,7 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import pt.ipt.dama.pingpongas.R
-import pt.ipt.dama.pingpongas.adapter.UserListAdapter
+import pt.ipt.dama.pingpongas.activity.UserListAdapter
 import pt.ipt.dama.pingpongas.model.StatsData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call

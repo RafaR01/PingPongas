@@ -1,0 +1,115 @@
+<!-- activity_ranking.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/listViewMatches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewVencedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vencedor"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="start|center_vertical"
+            android:layout_weight="1"
+            android:paddingStart="8dp" />
+
+        <TextView
+            android:id="@+id/textViewPerdedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/perdedor"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="end|center_vertical"
+            android:layout_weight="1"
+            android:paddingEnd="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:showDividers="none">
+
+        <ImageView
+            android:id="@+id/imageViewVencedor"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:paddingStart="8dp" />
+
+        <ImageView
+            android:id="@+id/imageViewPerdedor"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitEnd"
+            android:paddingEnd="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewVencedorUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="start|center_vertical"
+            android:layout_weight="1"
+            android:paddingStart="8dp" />
+
+        <TextView
+            android:id="@+id/textViewPerdedorUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="end|center_vertical"
+            android:layout_weight="1"
+            android:paddingEnd="8dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textViewVencedorScore"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#00A628"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="8dp"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/textViewPerdedorScore"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#E50000"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="8dp"
+            android:gravity="end" />
+    </LinearLayout>
+</LinearLayout>

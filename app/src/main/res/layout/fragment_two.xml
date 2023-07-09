@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="8dp"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:id="@+id/vencedorLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textVencedorLegend"
+            android:text="Vencedor"/>
+
+        <ImageView
+            android:id="@+id/imageVencedor"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/textVencedorName"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/textScoreV"
+            android:layout_marginTop="3dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textVS"
+        android:text="V.S."/>
+
+    <LinearLayout
+        android:id="@+id/perdedorLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textPerdedorLegend"
+            android:text="Perdedor"/>
+
+        <ImageView
+            android:id="@+id/imagePerdedor"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/textPerdedorName"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/textScoreP"
+            android:layout_marginTop="3dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
