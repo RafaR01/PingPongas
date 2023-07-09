@@ -64,6 +64,7 @@ class AdicionarPartida : AppCompatActivity() {
         // Retorna a lista de utilizadores obtida
         val call = RetrofitInitializer().noteService().listUsers()
         var dataList : List<String> = mutableListOf<String>()
+        val nomeJogador = intent.getStringExtra("loggeduser")
 
         call.enqueue(object : Callback<List<SignUpData>?> {
             override fun onResponse(
@@ -73,8 +74,12 @@ class AdicionarPartida : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val loginData = response.body()
                     if (loginData != null) {
+                        val filteredList = loginData.filter { it.username != nomeJogador }
+                        if(filteredList.isEmpty()){
+                            Toast.makeText(this@AdicionarPartida, "Não há adversários disponiveis", Toast.LENGTH_LONG).show()
+                        }
                         //coloca o nome dos utilizadores na lista
-                        val dataList = loginData.map { it.username }
+                        val dataList = filteredList.map { it.username }
                         utilizadoresAdapter.clear()
                         utilizadoresAdapter.addAll(dataList)
                         utilizadoresAdapter.notifyDataSetChanged()
