@@ -1,27 +1,20 @@
 package pt.ipt.dama.pingpongas.activity
 
 import androidx.appcompat.app.AppCompatActivity
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import org.w3c.dom.Text
 import pt.ipt.dama.pingpongas.R
-import pt.ipt.dama.pingpongas.activity.MainActivity
 import pt.ipt.dama.pingpongas.model.PontosData
-import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.absoluteValue
-import kotlin.properties.Delegates
 
 class AdicionarPartidas2 : AppCompatActivity() {
 
