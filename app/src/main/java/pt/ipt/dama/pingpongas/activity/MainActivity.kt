@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
      * vai permitir o user selecionar o adversário
      */
     private fun adicionaPartida(nomeJogador: String?){
-        val intent = Intent(this, AdicionarPartida::class.java)
+        val intent = Intent(this,AdicionarPartida::class.java)
         intent.putExtra("loggeduser", "$nomeJogador" )
         startActivity(intent)
     }

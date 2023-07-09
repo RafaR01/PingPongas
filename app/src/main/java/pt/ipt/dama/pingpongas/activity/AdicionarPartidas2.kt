@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat.startActivity
 import org.w3c.dom.Text
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.activity.MainActivity
-import pt.ipt.dama.pingpongas.activity.valorAdversario
 import pt.ipt.dama.pingpongas.model.PontosData
 import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
@@ -42,10 +41,11 @@ class AdicionarPartidas2 : AppCompatActivity() {
         pontosJogador2view = findViewById(R.id.pontosUser2)
         val errorMessage = findViewById<TextView>(R.id.errorMessage)
 
+         val nomeJogador = intent.getStringExtra("loggeduser")
 
         btnAdicionarPartida.setOnClickListener {
             pontosPartida(errorMessage)
-            adicionarPartida()
+            adicionarPartida(nomeJogador)
         }
 
 
@@ -74,13 +74,13 @@ class AdicionarPartidas2 : AppCompatActivity() {
         if(pontosJogador1 == 11 && pontosJogador2 < 10){
             errorMessage.visibility = View.VISIBLE
             errorMessage.text = "Jogador1 ganhou"
-            val pontuacao = PontosData("$nomeJogador", "costaGay", pontosJogador1, pontosJogador2)
+            val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
             sendPontosAPI(pontuacao)
         }
         if(pontosJogador1 < 10 && pontosJogador2 ==11){
             errorMessage.visibility = View.VISIBLE
             errorMessage.text = "Jogador2 ganhou."
-            val pontuacao = PontosData("$nomeJogador", "costaGay", pontosJogador1, pontosJogador2)
+            val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
             sendPontosAPI(pontuacao)
         }
         if(pontosJogador1 ==  pontosJogador2){
@@ -95,13 +95,13 @@ class AdicionarPartidas2 : AppCompatActivity() {
                     //jogador1 ganha
                     errorMessage.visibility = View.VISIBLE
                     errorMessage.text = "Jogador 1 ganhou."
-                    val pontuacao = PontosData("$nomeJogador", "costaGay", pontosJogador1, pontosJogador2)
+                    val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
                     sendPontosAPI(pontuacao)
                 }else {
                     //jogador2 ganha
                     errorMessage.visibility = View.VISIBLE
                     errorMessage.text = "Jogador 2 ganhou."
-                    val pontuacao = PontosData("$nomeJogador", "costaGay", pontosJogador1, pontosJogador2)
+                    val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
                     sendPontosAPI(pontuacao)
                 }
             }
@@ -114,9 +114,9 @@ class AdicionarPartidas2 : AppCompatActivity() {
     }
 
 
-    private fun adicionarPartida(){
+    private fun adicionarPartida(nomeJogador: String?){
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("loggeduser", "$nomeJogador" )
+        intent.putExtra("loggeduser", "$nomeJogador")
         startActivity(intent)
     }
 
