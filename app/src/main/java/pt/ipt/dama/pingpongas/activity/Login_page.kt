@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.model.LoginData
-import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback

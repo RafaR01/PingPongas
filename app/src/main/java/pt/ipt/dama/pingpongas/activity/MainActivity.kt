@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnRanking.setOnClickListener{
-            verRanking();
+            verRanking(loggedId);
         }
 
         btnHistorico.setOnClickListener{
@@ -64,8 +64,9 @@ class MainActivity : AppCompatActivity() {
      * Função que vai abrir um novo layout no qual vai permitir
      * ver os rankings de todos os users da aplicação
      */
-    private fun verRanking(){
+    private fun verRanking(loggedId: String?){
         val intent = Intent(this, Ranking::class.java)
+        intent.putExtra("loggedId", "$loggedId")
         startActivity(intent)
     }
 

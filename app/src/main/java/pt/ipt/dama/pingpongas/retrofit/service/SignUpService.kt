@@ -18,13 +18,6 @@ import retrofit2.http.Path
 
 interface SignUpService {
 
-    /**
-     * function to read data from API
-     * transform data in JSON format to Kotlin objects
-     */
-    @GET("users/nao_interessa_a_ninguem")
-    fun listUsers(): Call<List<SignUpData>>
-
     @GET("auth/{username}/{password}")
     fun authenticate(
         @Path("username") username: String,
@@ -40,6 +33,13 @@ interface SignUpService {
         @Path("user_id") user_id: Int
     ): Call<StatsData>
 
+    @GET("/stats/nao_interessa_a_ninguem")
+    fun usersStats(): Call<List<StatsData>>
+
+    /**
+     * function to read data from API
+     * transform data in JSON format to Kotlin objects
+     */
     @GET("/users/{user_id}/nao_interessa_a_ninguem")
     fun userData(
         @Path("user_id") user_id: Int
