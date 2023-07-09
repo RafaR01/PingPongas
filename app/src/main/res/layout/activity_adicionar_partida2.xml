@@ -60,8 +60,8 @@
         android:id="@+id/nomeJog2"
         android:layout_width="135dp"
         android:layout_height="35dp"
-        android:layout_marginLeft="256dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginLeft="252dp"
+        android:layout_marginBottom="104dp"
         android:text="@string/jogador2"
         app:layout_constraintBottom_toBottomOf="@id/pontosUser2"
         app:layout_constraintLeft_toLeftOf="parent" />

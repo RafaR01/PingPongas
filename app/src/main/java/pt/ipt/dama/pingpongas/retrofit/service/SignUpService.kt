@@ -1,6 +1,7 @@
 package pt.ipt.dama.pingpongas.retrofit.service
 
 import pt.ipt.dama.pingpongas.model.LoginData
+import pt.ipt.dama.pingpongas.model.PontosData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.model.imageData
@@ -48,5 +49,7 @@ interface SignUpService {
     @POST("upload/9/nao_interessa_a_ninguem")
     fun uploadImage(@Part("imagem") imagePart: imageData): Call<imageResponse>
 
+    @POST("/matches/nao_interessa_a_ninguem")
+    fun sendPontosAPI(@Body data:PontosData): Call<PontosData>
 
 }

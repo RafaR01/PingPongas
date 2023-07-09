@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="120dp"
-        android:text="@string/ainda_n_o_tens_conta"
+        android:text="@string/ainda_nao_tens_conta"
         android:textColor="#2990FF"
         android:textSize="18sp"
         android:textStyle="bold"
