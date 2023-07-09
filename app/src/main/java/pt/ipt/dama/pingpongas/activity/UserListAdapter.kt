@@ -1,4 +1,4 @@
-package pt.ipt.dama.pingpongas.adapter
+package pt.ipt.dama.pingpongas.activity
 
 import android.content.Context
 import android.view.LayoutInflater

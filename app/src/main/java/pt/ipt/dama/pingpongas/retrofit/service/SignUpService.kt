@@ -3,6 +3,7 @@ package pt.ipt.dama.pingpongas.retrofit.service
 import okhttp3.MultipartBody
 import pt.ipt.dama.pingpongas.model.LoginData
 import pt.ipt.dama.pingpongas.model.PontosData
+import pt.ipt.dama.pingpongas.model.MatchData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.model.imageData

@@ -12,7 +12,7 @@
         android:layout_width="164dp"
         android:layout_height="79dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="128dp"
         android:background="@color/square_color"
         android:gravity="center|top"
         android:text="Melhor Win Streak"
@@ -22,37 +22,11 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="164dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="100dp"
-        android:background="@color/square_color"
-        android:gravity="center|top"
-        android:text="Win Streak"
-        android:textColor="@color/text_color"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView15"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.442" />
-
-    <TextView
         android:id="@+id/textView10"
         android:layout_width="164dp"
         android:layout_height="79dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/square_color"
         android:gravity="center|top"
         android:text="% de Vitória"
@@ -71,14 +45,14 @@
         app:layout_constraintEnd_toEndOf="@+id/textView10"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.711" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="164dp"
         android:layout_height="79dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/square_color"
         android:gravity="center|top"
         android:text="Partidas ganhas"
@@ -98,14 +72,14 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.711" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="164dp"
         android:layout_height="79dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:background="@color/square_color"
         android:gravity="center|top"
         android:text="Partidas disputadas"
@@ -125,14 +99,14 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.519" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="164dp"
         android:layout_height="79dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:background="@color/square_color"
         android:gravity="center|top"
         android:text="Melhor Pontuação"
@@ -153,37 +127,25 @@
         app:layout_constraintTop_toTopOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.519" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imagemPerfil"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="44dp"
-        app:civ_border_color="@color/black"
-        app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="@id/altImagem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
     <Button
         android:id="@+id/fotoGaleria"
         android:layout_width="127dp"
         android:layout_height="38dp"
-        android:layout_marginLeft="216dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/galeria"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/altImagem" />
 
     <Button
         android:id="@+id/altImagem"
         android:layout_width="127dp"
         android:layout_height="38dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/alterar_imagem"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -199,6 +161,58 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.423" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="164dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="128dp"
+        android:background="@color/square_color"
+        android:gravity="center|top"
+        android:text="Win Streak"
+        android:textColor="@color/text_color"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.423" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagemPerfil"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="40dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/altImagem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
