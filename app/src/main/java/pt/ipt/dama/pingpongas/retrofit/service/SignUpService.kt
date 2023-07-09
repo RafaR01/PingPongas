@@ -63,4 +63,6 @@ interface SignUpService {
     @GET("users/{user_id}/nao_interessa_a_ninguem")
     fun getUser( @Path("user_id") user_id: Int) : Call<SignUpData>
 
+
+
 }

@@ -30,19 +30,27 @@ class AdicionarPartidas2 : AppCompatActivity() {
     private lateinit var btnAdicionarPartida: Button
     private lateinit var nomeJogador : TextView
     private lateinit var nomeAdversario : TextView
+    private lateinit var nomeJogadorTextView : TextView
+    private lateinit var nomeAdversarioTextView : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adicionar_partida2)
 
-        nomeJogador = findViewById(R.id.nomeJog1)
-        nomeAdversario = findViewById(R.id.nomeJog2)
+        nomeJogadorTextView= findViewById(R.id.nomeJog1)
+        nomeAdversarioTextView = findViewById(R.id.nomeJog2)
         btnAdicionarPartida = findViewById(R.id.partida)
         pontosJogador1view = findViewById(R.id.pontosUser1)
         pontosJogador2view = findViewById(R.id.pontosUser2)
         val errorMessage = findViewById<TextView>(R.id.errorMessage)
 
+        val nomeJogador = intent.getStringExtra("loggeduser")
+        val nomeAdversario = intent.getStringExtra("username")
+
+        nomeJogadorTextView.text = nomeJogador
+        nomeAdversarioTextView.text = nomeAdversario
 
         btnAdicionarPartida.setOnClickListener {
+
             pontosPartida(errorMessage)
             adicionarPartida()
         }
@@ -51,8 +59,8 @@ class AdicionarPartidas2 : AppCompatActivity() {
     }
 
     private fun pontosPartida(errorMessage: TextView) {
-        val nomeJogador = intent.getStringExtra("loggeduser")
-        val nomeAdversario = intent.getStringExtra("username")
+        val nomeJogador = nomeJogadorTextView.text.toString()
+        val nomeAdversario = nomeAdversarioTextView.text.toString()
         val pontosJogador1Text = pontosJogador1view.text.toString().trim()
         val pontosJogador2Text = pontosJogador2view.text.toString().trim()
 
@@ -115,7 +123,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
 
     private fun adicionarPartida(){
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("loggeduser", "$nomeJogador")
+        intent.putExtra("loggeduser", "$nomeJogador" )
         startActivity(intent)
     }
 
