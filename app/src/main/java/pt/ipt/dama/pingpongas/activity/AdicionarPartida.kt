@@ -28,7 +28,7 @@ class AdicionarPartida : AppCompatActivity() {
         val selecUtilizadores: Spinner = findViewById(R.id.selectadvr)
         val listaUtilizadores = resources.getStringArray(R.array.adversarios)
 
-        val nomeJogador = intent.getStringExtra("loggedUsername")
+        val nomeJogador = intent.getStringExtra("loggeduser")
 
         val utilizadoresAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaUtilizadores)
         utilizadoresAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -54,7 +54,7 @@ class AdicionarPartida : AppCompatActivity() {
 
     private fun criaPartida(nomeJogador: String?,username: String) {
         val intent = Intent(this, AdicionarPartidas2::class.java)
-        intent.putExtra("loggedUsername", "$nomeJogador")
+        intent.putExtra("loggeduser", "$nomeJogador")
         intent.putExtra("username", username)
         startActivity(intent)
     }

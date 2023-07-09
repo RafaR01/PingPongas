@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.model.LoginData
+import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +28,9 @@ class login_page : AppCompatActivity() {
             val username = findViewById<EditText>(R.id.editTextText).text.toString()
             val password = findViewById<EditText>(R.id.editTextTextPassword2).text.toString()
 
+
             authenticate(username,password)
+
         }
 
         val registerText = findViewById<TextView>(R.id.textView2)
@@ -52,6 +55,29 @@ class login_page : AppCompatActivity() {
     }
 
 
+    private fun getUser(userId: Int) : String{
+        val call = RetrofitInitializer().noteService().getUser(userId)
+        var username :String = ""
+        call.enqueue(object : Callback<SignUpData?> {
+            override fun onResponse(call: Call<SignUpData?>, response: Response<SignUpData?>) {
+                if (response.isSuccessful) {
+                    val userData = response.body()
+                    if (userData != null) {
+                        // Authentication successful
+                        username = userData.username
+                        var password = userData.password
+                        authenticate(username, password)
+                    }
+                }
+            }
+            override fun onFailure(call: Call<SignUpData?>, t: Throwable) {
+                // Handle network failure
+                t.printStackTrace()
+            }
+        })
+        return username
+    }
+
     private fun authenticate(username: String, password: String) {
         val call = RetrofitInitializer().noteService().authenticate(username, password)
 
@@ -62,11 +88,10 @@ class login_page : AppCompatActivity() {
                     if (loginData != null) {
                         // Authentication successful
                         val userId = loginData.id
-                        val userName = loginData.username
                         Toast.makeText(this@login_page, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
                         val intent = Intent(this@login_page, MainActivity::class.java)
                         intent.putExtra("loggedId", "$userId")
-                        intent.putExtra("loggedUsername", "$userName")
+                        intent.putExtra("loggeduser", "$username")
                         startActivity(intent)
                     } else {
                         // Authentication failed (no matching user found)
