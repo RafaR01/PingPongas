@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -51,15 +52,28 @@ class Perfil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(pt.ipt.dama.pingpongas.R.layout.activity_perfil)
 
-        //Obtain the Logged User Id, passed trough intent
-        val loggedId = intent.getStringExtra("loggedId")
-        var loggedIdInt = loggedId!!.toInt()
-        userStats(loggedIdInt)
-
-        userData(loggedIdInt)
 
         val btnImagem : Button = findViewById(R.id.altImagem);
         val btnImagemGaleria : Button = findViewById(R.id.fotoGaleria);
+
+        //Obtain the Logged User Id, passed trough intent
+        val loggedId = intent.getStringExtra("loggedId")
+        var loggedIdInt : Int? = null
+        var otherId = intent.getStringExtra("otherId")
+        var otherIdInt : Int? = null
+
+        if(otherId == null){
+            loggedIdInt = loggedId!!.toInt()
+            userData(loggedIdInt)
+            userStats(loggedIdInt)
+        }
+        else{
+            btnImagem.visibility = View.INVISIBLE
+            btnImagemGaleria.visibility = View.INVISIBLE
+            otherIdInt = otherId!!.toInt()
+            userData(otherIdInt)
+            userStats(otherIdInt)
+        }
 
         if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
             checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
@@ -96,9 +110,20 @@ class Perfil : AppCompatActivity() {
                 IMAGE_CAPTURE_CODE -> {
                     val bitmap = uriToBitmap(imagemUri!!)
                     //fotoUtilizador.setImageBitmap(bitmap)
-                    val loggedId = intent.getStringExtra("loggedId")
-                    var loggedIdInt = loggedId!!.toInt()
-                    val userId = loggedIdInt // Replace with the actual user ID
+
+                    var Id :Int = 0
+
+                    if(intent.getStringExtra("otherId")!!.toInt() == null){
+                        Id = intent.getStringExtra("loggedId")!!.toInt()
+                    }
+                    else{
+                        Id = intent.getStringExtra("otherId")!!.toInt()
+                    }
+                    // val loggedId = intent.getStringExtra("loggedId")
+                    // var loggedIdInt = loggedId!!.toInt()
+                    // val userId = loggedIdInt // Replace with the actual user ID
+
+                    val userId = Id
 
                     val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$userId.jpg" // Replace with your image URL
 
@@ -118,9 +143,20 @@ class Perfil : AppCompatActivity() {
                         val imagemUri = data.data
                         val bitmap = uriToBitmap(imagemUri!!)
                         //fotoUtilizador.setImageBitmap(bitmap)
-                        val loggedId = intent.getStringExtra("loggedId")
-                        var loggedIdInt = loggedId!!.toInt()
-                        val userId = loggedIdInt // Replace with the actual user ID
+
+                        var Id :Int = 0
+
+                        if(intent.getStringExtra("otherId") == null){
+                            Id = intent.getStringExtra("loggedId")!!.toInt()
+                        }
+                        else{
+                            Id = intent.getStringExtra("otherId")!!.toInt()
+                        }
+                        // val loggedId = intent.getStringExtra("loggedId")
+                        // var loggedIdInt = loggedId!!.toInt()
+                        // val userId = loggedIdInt // Replace with the actual user ID
+
+                        val userId = Id
 
                         val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$userId.jpg" // Replace with your image URL
 
@@ -172,7 +208,22 @@ class Perfil : AppCompatActivity() {
             override fun onResponse(call: Call<SignUpData>, response: Response<SignUpData>) {
                 if (response.isSuccessful) {
                     val loggedId = intent.getStringExtra("loggedId")
-                    val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$loggedId.jpg"
+
+                    var Id :String = ""
+
+                    if(intent.getStringExtra("otherId") == null){
+                        Id = intent.getStringExtra("loggedId")!!
+                    }
+                    else{
+                        Id = intent.getStringExtra("otherId")!!
+                    }
+                    // val loggedId = intent.getStringExtra("loggedId")
+                    // var loggedIdInt = loggedId!!.toInt()
+                    // val userId = loggedIdInt // Replace with the actual user ID
+
+                    val userId = Id
+
+                    val imageUrl = "https://rafaelr2001.pythonanywhere.com/images/$userId.jpg"
                     Picasso.get()
                         .invalidate(imageUrl)
 

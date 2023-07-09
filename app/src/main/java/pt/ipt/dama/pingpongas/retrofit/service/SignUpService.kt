@@ -32,6 +32,9 @@ interface SignUpService {
         @Path("user_id") user_id: Int
     ): Call<StatsData>
 
+    @GET("/stats/nao_interessa_a_ninguem")
+    fun usersStats(): Call<List<StatsData>>
+
     /**
      * function to read data from API
      * transform data in JSON format to Kotlin objects

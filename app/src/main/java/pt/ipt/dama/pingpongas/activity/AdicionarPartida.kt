@@ -32,8 +32,7 @@ class AdicionarPartida : AppCompatActivity() {
         }
 
         if(selecUtilizadores != null) {
-            val utilizadores =
-                ArrayAdapter(this, android.R.layout.simple_spinner_item, listaUtilizadores);
+            val utilizadores = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaUtilizadores);
             utilizadores.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             selecUtilizadores.adapter = utilizadores;
         }
