@@ -82,14 +82,10 @@ class AdicionarPartidas2 : AppCompatActivity() {
             pontosPartida(errorMessage)
         }
         if(pontosJogador1 == 11 && pontosJogador2 < 10){
-            errorMessage.visibility = View.VISIBLE
-            errorMessage.text = "Jogador1 ganhou"
             val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
             sendPontosAPI(pontuacao)
         }
         if(pontosJogador1 < 10 && pontosJogador2 ==11){
-            errorMessage.visibility = View.VISIBLE
-            errorMessage.text = "Jogador2 ganhou."
             val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
             sendPontosAPI(pontuacao)
         }
@@ -103,14 +99,10 @@ class AdicionarPartidas2 : AppCompatActivity() {
             if(diferenca.absoluteValue == 2){
                 if(pontosJogador1 > pontosJogador2) {
                     //jogador1 ganha
-                    errorMessage.visibility = View.VISIBLE
-                    errorMessage.text = "Jogador 1 ganhou."
                     val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
                     sendPontosAPI(pontuacao)
                 }else {
                     //jogador2 ganha
-                    errorMessage.visibility = View.VISIBLE
-                    errorMessage.text = "Jogador 2 ganhou."
                     val pontuacao = PontosData("$nomeJogador", "$nomeAdversario", pontosJogador1, pontosJogador2)
                     sendPontosAPI(pontuacao)
                 }
