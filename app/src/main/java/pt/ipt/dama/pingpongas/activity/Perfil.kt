@@ -28,6 +28,7 @@ import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.model.LoginData
 import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.model.StatsData
+import pt.ipt.dama.pingpongas.model.imageResponse
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,7 +50,7 @@ class Perfil : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("Tag", "entrou");
         super.onCreate(savedInstanceState)
-        setContentView(pt.ipt.dama.pingpongas.R.layout.activity_perfil)
+        setContentView(R.layout.activity_perfil)
 
         //Obtain the Logged User Id, passed trough intent
         val loggedId = intent.getStringExtra("loggedId")
@@ -91,7 +92,7 @@ class Perfil : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             when (requestCode) {
                 IMAGE_CAPTURE_CODE -> {
                     val bitmap = uriToBitmap(imagemUri!!)
