@@ -90,7 +90,7 @@ class AdicionarPartida : AppCompatActivity() {
     }
 
     private fun criaPartida(nomeJogador: String?, username: String) {
-        val intent = Intent(this, AdicionarPartida2::class.java)
+        val intent = Intent(this, AdicionarPartidas2::class.java)
         intent.putExtra("loggeduser", nomeJogador)
         intent.putExtra("username", username)
         startActivity(intent)

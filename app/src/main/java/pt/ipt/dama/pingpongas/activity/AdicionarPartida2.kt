@@ -1,60 +1,59 @@
 package pt.ipt.dama.pingpongas.activity
 
 import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import de.hdodenhof.circleimageview.CircleImageView
+import androidx.core.content.ContextCompat.startActivity
+import org.w3c.dom.Text
 import pt.ipt.dama.pingpongas.R
+import pt.ipt.dama.pingpongas.activity.MainActivity
 import pt.ipt.dama.pingpongas.model.PontosData
+import pt.ipt.dama.pingpongas.model.SignUpResult
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.absoluteValue
+import kotlin.properties.Delegates
 
-class AdicionarPartida2 : AppCompatActivity() {
+class AdicionarPartidas2 : AppCompatActivity() {
 
     private lateinit var pontosJogador1view: EditText
     private lateinit var pontosJogador2view: EditText
     private lateinit var btnAdicionarPartida: Button
     private lateinit var nomeJogador : TextView
-    private lateinit var nomeJogadorTextView : TextView
-    private lateinit var nomeAdversarioTextView : TextView
-    private lateinit var imagemJogador : CircleImageView
-    private lateinit var imagemAdversario : CircleImageView
+    private lateinit var nomeAdversario : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adicionar_partida2)
 
-        nomeJogadorTextView= findViewById(R.id.nomeJog1)
-        nomeAdversarioTextView = findViewById(R.id.nomeJog2)
+        nomeJogador = findViewById(R.id.nomeJog1)
+        nomeAdversario = findViewById(R.id.nomeJog2)
         btnAdicionarPartida = findViewById(R.id.partida)
         pontosJogador1view = findViewById(R.id.pontosUser1)
         pontosJogador2view = findViewById(R.id.pontosUser2)
         val errorMessage = findViewById<TextView>(R.id.errorMessage)
 
-        val nomeJogador = intent.getStringExtra("loggeduser")
-        val nomeAdversario = intent.getStringExtra("username")
-
-        nomeJogadorTextView.text = nomeJogador
-        nomeAdversarioTextView.text = nomeAdversario
+         val nomeJogador = intent.getStringExtra("loggeduser")
 
         btnAdicionarPartida.setOnClickListener {
             pontosPartida(errorMessage)
-            adicionarPartida()
+            adicionarPartida(nomeJogador)
         }
 
 
     }
 
     private fun pontosPartida(errorMessage: TextView) {
-        val nomeJogador = nomeJogadorTextView.text.toString()
-        val nomeAdversario = nomeAdversarioTextView.text.toString()
+        val nomeJogador = intent.getStringExtra("loggeduser")
+        val nomeAdversario = intent.getStringExtra("username")
         val pontosJogador1Text = pontosJogador1view.text.toString().trim()
         val pontosJogador2Text = pontosJogador2view.text.toString().trim()
 
@@ -115,7 +114,7 @@ class AdicionarPartida2 : AppCompatActivity() {
     }
 
 
-    private fun adicionarPartida(){
+    private fun adicionarPartida(nomeJogador: String?){
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("loggeduser", "$nomeJogador")
         startActivity(intent)
@@ -132,7 +131,7 @@ class AdicionarPartida2 : AppCompatActivity() {
                  */
                 override fun onResponse(call: Call<PontosData>, response: Response<PontosData>) {
                     val pontosData=response.body()
-                    Toast.makeText(this@AdicionarPartida2, "Pontos enviados com sucesso", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AdicionarPartidas2, "Pontos enviados com sucesso", Toast.LENGTH_LONG).show()
                 }
 
                 /**
@@ -141,8 +140,9 @@ class AdicionarPartida2 : AppCompatActivity() {
                  */
                 override fun onFailure(call: Call<PontosData>, t: Throwable) {
                     t.printStackTrace()
-                    Toast.makeText(this@AdicionarPartida2, "Eish", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AdicionarPartidas2, "Eish", Toast.LENGTH_LONG).show()
                 }
+
             }
         )
     }
