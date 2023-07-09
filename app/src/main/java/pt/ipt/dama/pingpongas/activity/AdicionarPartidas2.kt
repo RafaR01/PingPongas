@@ -123,7 +123,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
 
     private fun adicionarPartida(){
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("loggeduser", "$nomeJogador" )
+        intent.putExtra("loggeduser", "$nomeJogador")
         startActivity(intent)
     }
 
