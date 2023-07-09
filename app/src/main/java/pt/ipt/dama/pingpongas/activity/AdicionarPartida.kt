@@ -31,21 +31,21 @@ class AdicionarPartida : AppCompatActivity() {
         val btnNovaPartida: Button = findViewById(R.id.novapartida)
         selecUtilizadores = findViewById(R.id.selectadvr)
 
-
+        //vai buscar o username da pessoa que se autenticou na aplicação
         val nomeJogador = intent.getStringExtra("loggeduser")
 
-        // Chamar a função listUsers() para obter a lista de usuários
+        // Chamar a função listUsers() para obter a lista de utilizadores
         val listaUtilizadores: List<String> = listUsers()
 
-        // Criar o adapter com a lista de usuários
+        // Criar o adapter com a lista de utilizadores
         utilizadoresAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaUtilizadores)
         utilizadoresAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         selecUtilizadores.adapter = utilizadoresAdapter
 
+        //Vai esperar que o utilizador escolha o adversário e depois chama o criaPartida com o username e com o nome do adversario
         selecUtilizadores.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedUser = parent.getItemAtPosition(position).toString()
-                // Do something with the selected user
                 btnNovaPartida.setOnClickListener {
                     criaPartida(nomeJogador, username = selectedUser)
                 }
@@ -60,8 +60,8 @@ class AdicionarPartida : AppCompatActivity() {
     }
 
     private fun listUsers(): List<String> {
-        // Chame a função de API para obter a lista de usuários
-        // Retorne a lista de usuários obtida
+        // Chama a função de API para obter a lista de uilizadores
+        // Retorna a lista de utilizadores obtida
         val call = RetrofitInitializer().noteService().listUsers()
         var dataList : List<String> = mutableListOf<String>()
 
@@ -73,6 +73,7 @@ class AdicionarPartida : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val loginData = response.body()
                     if (loginData != null) {
+                        //coloca o nome dos utilizadores na lista
                         val dataList = loginData.map { it.username }
                         utilizadoresAdapter.clear()
                         utilizadoresAdapter.addAll(dataList)
@@ -89,6 +90,7 @@ class AdicionarPartida : AppCompatActivity() {
         return dataList
     }
 
+    //botão no qual vai redirecionar para a view da partida onde passa o nome do utilizador que se autenticou e o do adversário
     private fun criaPartida(nomeJogador: String?, username: String) {
         val intent = Intent(this, AdicionarPartidas2::class.java)
         intent.putExtra("loggeduser", nomeJogador)

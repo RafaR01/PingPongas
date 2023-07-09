@@ -45,6 +45,9 @@ class register_page : AppCompatActivity() {
         }
     }
 
+    /**
+     * Verifica se o emial é válido
+     */
     fun isValidEmail(email: String): Boolean {
         // Add your email validation logic here
         // For example, you can use a regular expression pattern to validate the email format
@@ -52,12 +55,18 @@ class register_page : AppCompatActivity() {
         return email.matches(emailRegex)
     }
 
+    /**
+     * verifica se a password é maior que 8 caracteres
+     */
     fun isValidPassword(password: String): Boolean {
         // Add your password validation logic here
         // For example, you can check the password length and complexity
         return password.length >= 8
     }
 
+    /**
+     * Faz as validadões necessárias se for falsa mostra mensagem de erro
+     */
     private fun validations(name: String, username: String, email: String, password: String, confirmPassword: String): Boolean{
         //Perform necessary data validation
         if (email == null || username == null || name == null || password == null || confirmPassword == null) {
@@ -84,7 +93,7 @@ class register_page : AppCompatActivity() {
     }
 
     /**
-     * add a random user to API
+     * Adiciona um utilizador à API
      */
     private fun addNewUser(name: String, username: String, email: String, password: String) {
         val user =  SignUpData(email, username, name, password, "default.jpg")
@@ -95,7 +104,7 @@ class register_page : AppCompatActivity() {
     }
 
     /**
-     * function that really add the new user to the API
+     * Função que vai adicionar, realmente, à API
      */
     private fun addUser(user: SignUpData, onResult:  (SignUpResult?) -> Unit) {
         val call= RetrofitInitializer().noteService().addUser(user)

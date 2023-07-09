@@ -36,8 +36,16 @@ class AdicionarPartidas2 : AppCompatActivity() {
         pontosJogador2view = findViewById(R.id.pontosUser2)
         val errorMessage = findViewById<TextView>(R.id.errorMessage)
 
+        /**
+         * Coloca o nome do utilizador que se autenticou e o do adversário nas variáveis
+         * nomeJogador e nomeAdversario respetivamente
+         */
         val nomeJogador = intent.getStringExtra("loggeduser")
         val nomeAdversario = intent.getStringExtra("username")
+
+        /**
+         * Mostra no ecrã o nome dos jogadores da partida
+         */
         nomeJogadorTextView.text = nomeJogador
         nomeAdversarioTextView.text = nomeAdversario
         btnAdicionarPartida.setOnClickListener {
@@ -48,6 +56,11 @@ class AdicionarPartidas2 : AppCompatActivity() {
 
     }
 
+    /**
+     * Faz as verificações dos pontos e se estiver correto chama a função
+     * sendPontosAPI no qual envia os pontos e os respetivos nomes dos utilizadores
+     * que estiveram a jogar
+     */
     private fun pontosPartida(errorMessage: TextView) {
         val nomeJogador = intent.getStringExtra("loggeduser")
         val nomeAdversario = intent.getStringExtra("username")
@@ -110,13 +123,19 @@ class AdicionarPartidas2 : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * Volta para o menu inicial e envia o nome do utilizador autenticado
+     */
     private fun adicionarPartida(nomeJogador: String?){
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("loggeduser", "$nomeJogador")
         startActivity(intent)
     }
 
+    /**
+     * Envia os pontos para a API e se tiver sucesso mostra a mensagem no ecrã
+     * se falhar mostra a mensagem respectiva à falha
+     */
     private fun sendPontosAPI(pontosData: PontosData){
         val call= RetrofitInitializer().noteService().sendPontosAPI(pontosData)
         call.enqueue(

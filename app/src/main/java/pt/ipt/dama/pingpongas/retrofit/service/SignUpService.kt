@@ -20,12 +20,15 @@ interface SignUpService {
 
 
     /**
-     * function to read data from API
-     * transform data in JSON format to Kotlin objects
+     * Função que lê os dados dos utilizadores da API
+     * e transforma a data de formato JSON para objetos Kotlin
      */
     @GET("users/nao_interessa_a_ninguem")
     fun listUsers(): Call<List<SignUpData>>
 
+    /**
+     * Função que vai autenticar os utilizadores
+     */
     @GET("auth/{username}/{password}")
     fun authenticate(
         @Path("username") username: String,
@@ -33,8 +36,8 @@ interface SignUpService {
     ): Call<LoginData>
 
     /**
-     * function to read data from API
-     * transform data in JSON format to Kotlin objects
+     * Função que lê os dados dos utilizadores da API
+     * e transforma a data de formato JSON para objetos Kotlin
      */
     @GET("/stats/{user_id}/nao_interessa_a_ninguem")
     fun userStats(
@@ -45,8 +48,8 @@ interface SignUpService {
     fun usersStats(): Call<List<StatsData>>
 
     /**
-     * function to read data from API
-     * transform data in JSON format to Kotlin objects
+     * Função que lê os dados dos utilizadores da API
+     * e transforma a data de formato JSON para objetos Kotlin
      */
     @GET("/users/{user_id}/nao_interessa_a_ninguem")
     fun userData(
@@ -54,11 +57,14 @@ interface SignUpService {
     ): Call<SignUpData>
 
     /**
-     * function to write a new user to API
+     * função que escreve um utilizador na API
      */
     @POST("users/nao_interessa_a_ninguem")
     fun addUser(@Body data:SignUpData): Call<SignUpResult>
 
+    /**
+     * Função que permite enviar a fotografia de perfil
+     */
     @Multipart
     @POST("upload/{user_id}/nao_interessa_a_ninguem")
     fun uploadImage(
@@ -66,8 +72,15 @@ interface SignUpService {
         @Part imagem: MultipartBody.Part
     ): Call<SignUpData>
 
+    /**
+     * Função que envia o resultado do jogo juntamente com o username dos jogadores
+     */
     @POST("/matches/nao_interessa_a_ninguem")
     fun sendPontosAPI(@Body data:PontosData): Call<PontosData>
+
+    /**
+     * Função que permite ir buscar a informação do utilizador consoante o seu ID
+     */
     @GET("users/{user_id}/nao_interessa_a_ninguem")
     fun getUser( @Path("user_id") user_id: Int) : Call<SignUpData>
 

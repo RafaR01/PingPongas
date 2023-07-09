@@ -78,6 +78,10 @@ class login_page : AppCompatActivity() {
         return username
     }
 
+    /**
+     * Função que vai autentitcar o utilizador e permitir utilizar a aplicação e
+     * retorna o id do utilizador e o seu username
+     */
     private fun authenticate(username: String, password: String) {
         val call = RetrofitInitializer().noteService().authenticate(username, password)
 

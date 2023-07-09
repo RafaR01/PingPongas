@@ -46,6 +46,9 @@ class Ranking : AppCompatActivity() {
         }
     }
 
+    /**
+     * Função que vai buscar à API os dados relativos ao resultado dos jogos feitos pelos utilizadores
+     */
     fun usersData(){
         val call = RetrofitInitializer().noteService().usersStats()
 

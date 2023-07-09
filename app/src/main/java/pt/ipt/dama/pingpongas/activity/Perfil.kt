@@ -94,6 +94,9 @@ class Perfil : AppCompatActivity() {
         }
     }
 
+    /**
+     * Função que vai abrir a câmera
+     */
     private fun abrirCamera(){
         val values = ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "nova foto");
@@ -104,6 +107,10 @@ class Perfil : AppCompatActivity() {
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
     }
 
+    /**
+     * verifica se a fotografia colocada é da camera ou se é colocada da galeria
+     * e depois chama a função uploadImagem para mandar a fotografia para a API
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
@@ -200,6 +207,9 @@ class Perfil : AppCompatActivity() {
         startActivityForResult(intent, RESULT_LOAD_IMAGE)
     }
 
+    /**
+     *
+     */
     fun uploadImage(userId: Int, imageFile: File) {
         val requestFile = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
         val body = MultipartBody.Part.createFormData("imagem", imageFile.name, requestFile)
