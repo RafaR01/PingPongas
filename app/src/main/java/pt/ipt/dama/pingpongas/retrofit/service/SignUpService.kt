@@ -58,7 +58,7 @@ interface SignUpService {
     ): Call<SignUpData>
 
     /**
-     * função que escreve um utilizador na API
+     * Função que escreve um utilizador na API
      */
     @POST("users/nao_interessa_a_ninguem")
     fun addUser(@Body data:SignUpData): Call<SignUpResult>
@@ -85,6 +85,11 @@ interface SignUpService {
     @GET("users/{user_id}/nao_interessa_a_ninguem")
     fun getUser( @Path("user_id") user_id: Int) : Call<SignUpData>
 
+    /**
+     * Função que permite ir buscar as partidas realizadas
+     */
+    @GET("/matches/nao_interessa_a_ninguem")
+    fun getMatches(): Call<List<MatchData>>
 
 
 }

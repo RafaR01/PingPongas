@@ -1,10 +1,13 @@
 package pt.ipt.dama.pingpongas.activity
 
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import pt.ipt.dama.pingpongas.R
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,12 @@ class MainActivity : AppCompatActivity() {
         var btnHistorico : Button = findViewById(R.id.historico);
         var btnPerfil : Button = findViewById(R.id.perfil);
         var btnTermSessao : Button = findViewById(R.id.termsessao);
+
+        val view = findViewById<View>(R.id.menu)
+        view.setOnTouchListener { v, event -> // Disable slide gesture
+            true
+        }
+
 
         /**
          * Colocar os botões a funcionar quando
@@ -44,10 +53,10 @@ class MainActivity : AppCompatActivity() {
             verPerfil(loggedId);
         }
 
-        /**
+
         btnTermSessao.setOnClickListener{
             termSessao();
-        }*/
+        }
     }
 
     /**
@@ -91,10 +100,15 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Função que termina a sessão do user
-
+     */
     private fun termSessao(){
-        val intent = Intent(this, Login_page::class.java)
+        val intent = Intent(this, Login::class.java)
         startActivity(intent)
     }
-     */
+
+    override fun onBackPressed() {
+        // Disable the back button
+        // You can leave this method empty to do nothing, or add your own logic here
+    }
+
 }

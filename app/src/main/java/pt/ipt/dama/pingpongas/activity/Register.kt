@@ -19,7 +19,7 @@ import java.util.GregorianCalendar
 import kotlin.random.Random
 
 
-class register_page : AppCompatActivity() {
+class Register : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class register_page : AppCompatActivity() {
 
             if(validations(name, username, email, password, confirmPassword)){
                 addNewUser(name, username, email, password)
-                val intent = Intent(this, login_page::class.java)
+                val intent = Intent(this, Login::class.java)
                 startActivity(intent)
             }
             else{
@@ -65,27 +65,31 @@ class register_page : AppCompatActivity() {
     }
 
     /**
-     * Faz as validadões necessárias se for falsa mostra mensagem de erro
+     * Faz as validadões necessárias se for falso retorna falso
      */
     private fun validations(name: String, username: String, email: String, password: String, confirmPassword: String): Boolean{
         //Perform necessary data validation
         if (email == null || username == null || name == null || password == null || confirmPassword == null) {
             // Display an error message to the user indicating the required fields are not filled
+            Toast.makeText(this@Register, "Por favor preencha os campos", Toast.LENGTH_LONG).show()
             return false;
         }
 
         if (!isValidEmail(email)) {
             // Display an error message to the user indicating an invalid email format
+            Toast.makeText(this@Register, "Email inválido", Toast.LENGTH_LONG).show()
             return false;
         }
 
         if (!isValidPassword(password)) {
             // Display an error message to the user indicating password requirements (e.g., length, complexity)
+            Toast.makeText(this@Register, "Password inválida", Toast.LENGTH_LONG).show()
             return false;
         }
 
         if (!password.equals(confirmPassword)) {
             // Display an error message to the user indicating that the passwords do not match
+            Toast.makeText(this@Register, "As passwords não combinam", Toast.LENGTH_LONG).show()
             return false;
         }
 

@@ -318,32 +318,30 @@ class Perfil : AppCompatActivity() {
                         if(victoryChance > 60)
                             quadradoVictoryChance.setBackgroundColor(Color.parseColor("#24F08D"))
 
-//                        var valor = findViewById<TextView>(R.id.textView4)
-//                        valor.text = userId.toString()
 
-                        var valor2 = findViewById<TextView>(R.id.textView9)
-                        valor2.text = userMatches.toString()
+                        var usermatches = findViewById<TextView>(R.id.textView9)
+                        usermatches.text = userMatches.toString()
 
-                        var valor3 = findViewById<TextView>(R.id.textView19)
-                        valor3.text = bestWinStreak.toString()
+                        var bestwinStreak = findViewById<TextView>(R.id.textView19)
+                        bestwinStreak.text = bestWinStreak.toString()
 
-                        var valor4 = findViewById<TextView>(R.id.textView16)
-                        valor4.text = winStreak.toString()
+                        var winstreak = findViewById<TextView>(R.id.textView16)
+                        winstreak.text = winStreak.toString()
 
-                        var valor5 = findViewById<TextView>(R.id.textView14)
-                        valor5.text = gamesWon.toString()
+                        var gameswon = findViewById<TextView>(R.id.textView14)
+                        gameswon.text = gamesWon.toString()
 
-                        var valor6 = findViewById<TextView>(R.id.textView12)
-                        valor6.text = victoryChance.toString()
+                        var victorychance = findViewById<TextView>(R.id.textView12)
+                        victorychance.text = victoryChance.toString()
 
-                        var valor7 = findViewById<TextView>(R.id.textView9)
-                        valor7.text = gamesPlayed.toString()
+                        var gamesplayed = findViewById<TextView>(R.id.textView9)
+                        gamesplayed.text = gamesPlayed.toString()
 
-                        var valor8 = findViewById<TextView>(R.id.textView4)
-                        valor8.text = bestScore.toString()
+                        var bestscore = findViewById<TextView>(R.id.textView4)
+                        bestscore.text = bestScore.toString()
 
-                        var valor9 = findViewById<TextView>(R.id.textView7)
-                        valor9.text = userName
+                        var username = findViewById<TextView>(R.id.textView7)
+                        username.text = userName
 
                         Toast.makeText(this@Perfil, "Stats obitdos com sucesso", Toast.LENGTH_LONG).show()
                         intent.putExtra("loggedId", "$userId")

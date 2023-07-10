@@ -21,8 +21,6 @@ class AdicionarPartidas2 : AppCompatActivity() {
     private lateinit var pontosJogador1view: EditText
     private lateinit var pontosJogador2view: EditText
     private lateinit var btnAdicionarPartida: Button
-    private lateinit var nomeJogador : TextView
-    private lateinit var nomeAdversario : TextView
     private lateinit var nomeJogadorTextView : TextView
     private lateinit var nomeAdversarioTextView : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,7 +146,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
                  */
                 override fun onFailure(call: Call<PontosData>, t: Throwable) {
                     t.printStackTrace()
-                    Toast.makeText(this@AdicionarPartidas2, "Eish", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AdicionarPartidas2, "Erro conexão", Toast.LENGTH_LONG).show()
                 }
 
             }

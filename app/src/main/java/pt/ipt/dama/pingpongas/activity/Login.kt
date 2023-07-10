@@ -1,25 +1,32 @@
-package pt.ipt.dama.pingpongas.activity
+package  pt.ipt.dama.pingpongas.activity
 
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import pt.ipt.dama.pingpongas.R
 import pt.ipt.dama.pingpongas.model.LoginData
+import pt.ipt.dama.pingpongas.model.SignUpData
 import pt.ipt.dama.pingpongas.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class login_page : AppCompatActivity() {
+class Login: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
+
+        val view = findViewById<View>(R.id.login)
+        view.setOnTouchListener { v, event -> // Disable slide gesture
+            true
+        }
 
         val btnLogin: Button = findViewById(R.id.loginButton)
 
@@ -48,34 +55,11 @@ class login_page : AppCompatActivity() {
             false
         }
         registerText.setOnClickListener {
-            val intent = Intent(this, register_page::class.java)
+            val intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
     }
 
-
-    private fun getUser(userId: Int) : String{
-        val call = RetrofitInitializer().noteService().getUser(userId)
-        var username :String = ""
-        call.enqueue(object : Callback<SignUpData?> {
-            override fun onResponse(call: Call<SignUpData?>, response: Response<SignUpData?>) {
-                if (response.isSuccessful) {
-                    val userData = response.body()
-                    if (userData != null) {
-                        // Authentication successful
-                        username = userData.username
-                        var password = userData.password
-                        authenticate(username, password)
-                    }
-                }
-            }
-            override fun onFailure(call: Call<SignUpData?>, t: Throwable) {
-                // Handle network failure
-                t.printStackTrace()
-            }
-        })
-        return username
-    }
 
     /**
      * Função que vai autentitcar o utilizador e permitir utilizar a aplicação e
@@ -91,30 +75,34 @@ class login_page : AppCompatActivity() {
                     if (loginData != null) {
                         // Authentication successful
                         val userId = loginData.id
-                        Toast.makeText(this@login_page, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this@login_page, MainActivity::class.java)
+                        Toast.makeText(this@Login, "Sessão iniciada com sucesso", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@Login, MainActivity::class.java)
                         intent.putExtra("loggedId", "$userId")
                         intent.putExtra("loggeduser", "$username")
                         startActivity(intent)
                     } else {
                         // Authentication failed (no matching user found)
-                        Toast.makeText(this@login_page, "Acesso negado", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Login, "Acesso negado", Toast.LENGTH_LONG).show()
                     }
                 } else {
                     // Handle non-successful response (e.g., 404 or 500)
-                    Toast.makeText(this@login_page, "Acesso negado", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this@login_page, register_page::class.java)
+                    Toast.makeText(this@Login, "Acesso negado", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@Login, Register::class.java)
                     startActivity(intent)
                 }
             }
 
             override fun onFailure(call: Call<LoginData?>, t: Throwable) {
                 // Handle network failure
-                Toast.makeText(this@login_page, "Erro de conexão", Toast.LENGTH_LONG).show()
-                val intent = Intent(this@login_page, register_page::class.java)
+                Toast.makeText(this@Login, "Erro de conexão", Toast.LENGTH_LONG).show()
+                val intent = Intent(this@Login, Register::class.java)
                 startActivity(intent)
                 t.printStackTrace()
             }
         })
+    }
+    override fun onBackPressed() {
+        // Disable the back button
+        // You can leave this method empty to do nothing, or add your own logic here
     }
 }

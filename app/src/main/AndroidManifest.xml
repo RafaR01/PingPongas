@@ -25,10 +25,10 @@
         android:theme="@style/Theme.PingPongas"
         tools:targetApi="31">
         <activity
-            android:name=".activity.register_page"
+            android:name=".activity.Register"
             android:exported="false" />
         <activity
-            android:name=".activity.login_page"
+            android:name=".activity.Login"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
