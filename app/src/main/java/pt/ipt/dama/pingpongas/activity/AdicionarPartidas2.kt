@@ -38,6 +38,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
          * Coloca o nome do utilizador que se autenticou e o do adversário nas variáveis
          * nomeJogador e nomeAdversario respetivamente
          */
+        val loggedId = intent.getStringExtra("loggedId")
         val nomeJogador = intent.getStringExtra("loggeduser")
         val nomeAdversario = intent.getStringExtra("username")
 
@@ -48,7 +49,7 @@ class AdicionarPartidas2 : AppCompatActivity() {
         nomeAdversarioTextView.text = nomeAdversario
         btnAdicionarPartida.setOnClickListener {
             pontosPartida(errorMessage)
-            adicionarPartida(nomeJogador)
+            adicionarPartida(nomeJogador, loggedId)
         }
 
 
@@ -116,8 +117,9 @@ class AdicionarPartidas2 : AppCompatActivity() {
     /**
      * Volta para o menu inicial e envia o nome do utilizador autenticado
      */
-    private fun adicionarPartida(nomeJogador: String?){
+    private fun adicionarPartida(nomeJogador: String?, loggedId: String?){
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("loggedId", "$loggedId")
         intent.putExtra("loggeduser", "$nomeJogador")
         startActivity(intent)
     }

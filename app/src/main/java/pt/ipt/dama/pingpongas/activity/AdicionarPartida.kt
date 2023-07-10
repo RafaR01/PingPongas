@@ -31,6 +31,7 @@ class AdicionarPartida : AppCompatActivity() {
         val btnNovaPartida: Button = findViewById(R.id.novapartida)
         selecUtilizadores = findViewById(R.id.selectadvr)
 
+        val loggedId = intent.getStringExtra("loggedId")
         //vai buscar o username da pessoa que se autenticou na aplicação
         val nomeJogador = intent.getStringExtra("loggeduser")
 
@@ -47,7 +48,7 @@ class AdicionarPartida : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedUser = parent.getItemAtPosition(position).toString()
                 btnNovaPartida.setOnClickListener {
-                    criaPartida(nomeJogador, username = selectedUser)
+                    criaPartida(nomeJogador, username = selectedUser, loggedId)
                 }
             }
 
@@ -96,8 +97,9 @@ class AdicionarPartida : AppCompatActivity() {
     }
 
     //botão no qual vai redirecionar para a view da partida onde passa o nome do utilizador que se autenticou e o do adversário
-    private fun criaPartida(nomeJogador: String?, username: String) {
+    private fun criaPartida(nomeJogador: String?, username: String, loggedId: String?) {
         val intent = Intent(this, AdicionarPartidas2::class.java)
+        intent.putExtra("loggedId", "$loggedId")
         intent.putExtra("loggeduser", nomeJogador)
         intent.putExtra("username", username)
         startActivity(intent)

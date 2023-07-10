@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
          * o utlizador toca neles
          */
         btnAdicionarPartida.setOnClickListener{
-            adicionaPartida(nomeJogador);
+            adicionaPartida(nomeJogador, loggedId);
         }
 
         btnRanking.setOnClickListener{
@@ -63,8 +63,9 @@ class MainActivity : AppCompatActivity() {
      * Funcção adicionaPartida vai abrir um novo layout no qual
      * vai permitir o user selecionar o adversário
      */
-    private fun adicionaPartida(nomeJogador: String?){
+    private fun adicionaPartida(nomeJogador: String?, loggedId: String?){
         val intent = Intent(this,AdicionarPartida::class.java)
+        intent.putExtra("loggedId", "$loggedId")
         intent.putExtra("loggeduser", "$nomeJogador" )
         startActivity(intent)
     }
